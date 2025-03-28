@@ -1,0 +1,1170 @@
+.product-filter-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8px 0;
+    font-family: 'Inter, Helvetica, Arial, sans-serif';
+    color: #38383D;
+    position: relative; // Ensure proper positioning context
+    overflow: hidden; // Ensure the modal is not clipped
+
+    // Specific selector to override any other styles
+    >.left-arrow-button {
+        position: absolute !important; // Changed from relative to absolute
+        top: 40px !important; // Adjust to align with the buttons
+        left: 5px !important; // Position it outside the container to the left
+        width: 32px !important;
+        height: 32px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .filter-header-wrapper {
+        padding: 8px 0;
+
+        .filter-title {
+            font-size: 20px;
+            font-weight: 500;
+            color: #27272A;
+        }
+    }
+
+    .filter-sections-wrapper {
+        position: relative; // Ensure proper positioning context
+        overflow: visible; // Remove 'hidden' to allow the modal to display properly
+
+    }
+
+    .filter-header {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+
+
+        .filter-button {
+            display: flex;
+            justify-content: center; // Căn giữa theo chiều ngang
+            align-items: center; // Căn giữa theo chiều dọc
+            position: relative;
+            background: none;
+            font-size: 14px;
+            line-height: 21px;
+            color: rgb(39, 39, 42);
+            padding: 6px 12px;
+            align-self: flex-end; // Căn phần tử về cuối trong container cha
+            border: 1px solid rgb(221, 221, 227);
+            border-radius: 4px;
+            gap: 8px; // Khoảng cách giữa các phần tử con (icon, text)
+
+            // Định dạng icon
+            .filter-icon {
+                width: 20px;
+                height: 20px;
+            }
+
+            // Hover effect
+            &:hover {
+                background-color: rgba(221, 221, 227, 0.2);
+            }
+        }
+
+    }
+
+    .filter-sections {
+        display: flex;
+        position: relative;
+        transition: transform 0.3s ease; // Add smooth transition for transform
+        will-change: transform;
+        border-bottom: 1px solid #f1f1f1;
+        padding-bottom: 16px;
+        margin-bottom: 16px;
+        padding-left: 0; // Remove any left padding
+        margin-left: 0; // Remove any left margin
+
+        &.translated {
+            .filter-sections-brand {
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    height: 100%;
+                    width: 60px; // Reduce width to not cover the divider
+                    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+                    pointer-events: none;
+
+                    display: block; // Make sure it's displayed
+                }
+
+                .filter-options {
+
+                    // Add fade effect to first two buttons
+                    .option-chip:nth-child(1) {
+                        opacity: 0.6;
+                        position: relative;
+
+                    }
+
+                    .option-chip:nth-child(2) {
+                        opacity: 0.8;
+                        position: relative;
+
+
+                        border-radius: 16px;
+                        border-image-source: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, rgba(16, 15, 15, 0.8) 100%);
+
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 16px;
+                            background: linear-gradient(to right, rgb(255, 255, 255) 40%, rgba(239, 235, 235, 0) 70%, rgba(255, 255, 255, 0) 100%);
+                            pointer-events: none;
+
+
+                            display: block; // Ensure it's visible
+
+                        }
+                    }
+
+
+
+
+                }
+            }
+
+        }
+    }
+
+    .filter-sections-brand {
+        position: relative;
+        overflow: visible;
+        transition: transform 0.3s ease;
+        will-change: transform;
+
+        padding-left: 0; // Remove the left padding so it aligns with content below
+    }
+
+    .filter-section-groups {
+        display: flex;
+        gap: 32px;
+        max-width: calc(100% - 100px); // Leave space for the "Tất cả" button
+        padding-left: 0; // Ensure no left padding
+        margin-left: 0; // Ensure no left margin
+        position: relative;
+
+        // Remove the previous pseudo-element divider
+        >.filter-sections-brand {
+            position: relative;
+            // Remove the ::before pseudo-element
+        }
+
+        // Add styling for the dedicated vertical divider
+        .vertical-divider {
+            width: 1.5px;
+            height: 30px;
+            background-color: #EBEBF0;
+            margin-top: 38px; // Aligns with the buttons
+            margin-left: -16px;
+            margin-right: -16px;
+            align-self: flex-start;
+            position: relative; // Ensure it has its own positioning context
+
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0.7; // Make it slightly faded for a subtle look
+            font-size: 18px; // Make the text character larger
+            line-height: 30px; // Center text vertically
+            text-align: center; // Center text horizontally
+            color: #EBEBF0; // Make the text the same color as background
+            // Remove any properties that might hide the text character
+        }
+    }
+
+    // Make sure the divider is visible in translated state
+    .filter-sections.translated .vertical-divider {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 0.7 !important;
+    }
+
+    // Override any gradient effects that might hide the divider
+    .filter-sections.translated .filter-sections-brand::before {}
+
+    .filter-sections-brand {
+        position: relative;
+        overflow: visible;
+        transition: transform 0.3s ease;
+        will-change: transform;
+
+        padding-left: 0; // Remove the left padding so it aligns with content below
+
+
+    }
+
+    // Add this to ensure the button shows in translated state
+    .filter-sections.translated .left-arrow-button {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        left: -40px !important; // Position it correctly when translated
+    }
+
+    .filter-sections-supplier {
+        position: relative;
+        overflow: visible;
+
+
+
+        .supplier-options-container {
+            transition: transform 0.3s ease;
+            will-change: transform;
+            position: relative;
+
+
+
+            .filter-options {
+                width: 100%; // Ensure full width for all buttons
+
+
+            }
+
+            &.expanded {
+                transform: translateX(-60px); // Ensure smooth expansion
+            }
+        }
+    }
+
+    .filter-section {
+        position: relative;
+
+
+        .section-label {
+            font-size: 14px;
+            color: #808089;
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
+
+        .filter-options-wrapper {
+            display: flex;
+            align-items: center;
+            position: relative;
+
+        }
+
+        .expand-button {
+            transition: transform 0.3s ease;
+            margin-left: 10px;
+            position: relative;
+
+            background: #fff;
+            border: 1px solid #D8D8D8;
+            border-radius: 50%; // Make it circular
+            min-width: 32px; // Set fixed width
+            height: 32px; // Set fixed height
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+                background-color: #f5f5f5;
+                border-color: #C0C0C0; // Darker on hover
+            }
+
+            svg {
+                width: 16px;
+                height: 16px;
+                color: #808089;
+                transform: none; // Remove rotation
+            }
+        }
+
+        .brand-options-container {
+            transition: transform 0.3s ease;
+            will-change: transform;
+            position: relative;
+            overflow: visible;
+
+
+        }
+
+        .supplier-options-container {
+            transition: transform 0.3s ease;
+            will-change: transform;
+            position: relative;
+
+
+            .filter-options {
+                width: 90%;
+
+
+            }
+        }
+
+        .filter-options {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            line-height: 21px;
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 8px;
+            width: max-content;
+
+            .option-chip {
+                border: 1px solid #D8D8D8; // Darker border color (previously #EBEBF0)
+                border-radius: 16px;
+                padding: 4px 12px;
+                font-size: 14px;
+                background-color: #fff;
+                cursor: pointer;
+                transition: all 0.2s;
+                color: #38383D;
+                height: 32px;
+                display: flex;
+                align-items: center;
+                white-space: nowrap;
+                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); // Add subtle shadow for depth
+
+                &:hover {
+                    background-color: #f5f5f5;
+                    border-color: #C0C0C0; // Even darker on hover
+                }
+
+                &.selected {
+                    border-color: #0B74E5;
+                    color: #0B74E5;
+                    background-color: #EBF5FF;
+                }
+            }
+
+            // Add specific styling for Thiên Long button to ensure it's visible
+            .option-chip:nth-child(2) {
+
+                // Target Thiên Long specifically
+                &::before {
+                    content: "";
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+                    pointer-events: none;
+
+
+                    border-radius: 16px;
+                    display: none; // This is controlled by parent container's gradient
+                }
+            }
+        }
+
+        .arrow-button {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+            height: 32px;
+            border: 1px solid #D8D8D8; // Darker border color
+            border-radius: 50%;
+            background-color: #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #808089;
+            margin-left: 10px;
+
+
+            &:hover {
+                background-color: #f5f5f5;
+                border-color: #C0C0C0; // Even darker on hover
+            }
+
+            .arrow-icon-wrapper {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                svg {
+                    width: 16px;
+                    height: 16px;
+                    color: #808089;
+                }
+            }
+        }
+    }
+
+}
+
+.brand-selection-modal {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid #E0E0E0;
+    min-width: 320px;
+    max-height: 80vh !important; // Limit height to 80% of the viewport
+    height: auto !important; // Dynamically adjust height to fit content
+    overflow-y: auto !important; // Enable vertical scrollbar for overflow content
+    display: flex; // Use flexbox for alignment
+    flex-direction: column; // Stack content vertically
+    align-items: flex-start; // Align content to the start
+    /* Allow the modal to expand fully */
+    transform-origin: top left; // For smoother animations
+    animation: modalFadeIn 0.2s ease-out; // Add animation for visibility
+
+    @keyframes modalFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    // Remove debugging outlines in production
+    outline: none;
+
+    &::before {
+        display: none; // Remove debugging outline
+    }
+
+    &::-webkit-scrollbar {
+        width: 8px; // Customize scrollbar width
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #ccc; // Customize scrollbar thumb color
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: #aaa; // Darker color on hover
+    }
+
+    -ms-overflow-style: none !important; // Hide scrollbar for IE/Edge
+    scrollbar-width: none !important; // Hide scrollbar for Firefox
+
+    .brand-selection-content {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .brand-selection-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        max-height: none !important; // Remove fixed height
+        height: auto !important; // Dynamically adjust height
+        overflow: visible !important; // Ensure no overflow within options
+    }
+
+    .brand-selection-actions {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+
+        .reset-button,
+        .apply-button {
+            flex: 1;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .reset-button {
+            background-color: white;
+            border: 1px solid #D8D8D8;
+            color: #38383D;
+
+            &:hover {
+                background-color: #f5f5f5;
+            }
+        }
+
+        .apply-button {
+            background-color: #0B74E5;
+            color: white;
+            border: none;
+
+            &:hover {
+                background-color: #0A66C2;
+            }
+        }
+    }
+}
+
+// Add this at the very top level to ensure the portal container is styled properly
+#brand-modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; // Allow clicks to pass through to underlying elements
+
+
+    &>* {
+        pointer-events: auto; // But enable interaction with direct children
+    }
+}
+
+.filter-options-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 8px 0;
+    position: relative;
+    font-size: 14px;
+    line-height: 21px;
+    font-family: 'Inter', Helvetica, Arial, sans-serif;
+
+
+
+    .option {
+        position: relative;
+        /* Needed for absolute positioning of the divider */
+        /* Add this to make the absolute positioning work */
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        font-size: 13px;
+        color: #38383D;
+
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #0B74E5;
+            border-radius: 2px;
+            border: 1px solid #EBEBF0;
+        }
+
+        .option-content {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+    }
+
+    .now-tag {
+        height: 17px; // Đảm bảo kích thước ảnh giống với ảnh mẫu
+        width: auto; // Giữ nguyên tỷ lệ khung hình
+    }
+
+    .deal-tag {
+        height: 16px; // Đặt kích thước icon giống mẫu
+        width: auto; // Giữ nguyên tỷ lệ ảnh
+    }
+
+    .freeship-tag {
+        height: 16px; // Đảm bảo icon có chiều cao chuẩn
+        width: auto; // Giữ nguyên tỷ lệ ảnh
+    }
+
+    .star-rating {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+
+        svg {
+            height: 16px; // Đảm bảo icon có chiều cao chuẩn
+            width: 16px; // Giữ nguyên tỷ lệ ảnh
+            flex-shrink: 0; // Đảm bảo không bị co lại
+        }
+    }
+
+
+    .option-text {
+        font-size: 13px;
+        color: #38383D;
+    }
+
+    .sort {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        .sort-label {
+            color: #808089;
+            font-size: 13px;
+        }
+
+        .sort-button {
+            height: 32px;
+            padding: 0 12px;
+            border-radius: 16px;
+            border: 1px solid #D8D8D8; // Darker border color
+            background: white;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #38383D;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s ease;
+
+            &:hover {
+                background: #F5F5FA;
+                border-color: #C0C0C0; // Even darker on hover
+            }
+
+            svg {
+                color: #808089;
+            }
+        }
+    }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+    .product-filter-container {
+        .filter-sections {
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .filter-section-groups {
+            flex-direction: column;
+            gap: 16px;
+            max-width: 100%;
+        }
+
+        .filter-header {
+            position: relative;
+            margin-top: 16px;
+            transform: none;
+        }
+
+        .filter-options-row {
+            display: flex;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 12px !important;
+            font-size: 14px !important;
+            line-height: 21px !important;
+            font-family: 'Inter, Helvetica, Arial, sans-serif';
+
+            width: 100% !important;
+
+            .sort {
+                margin-left: 0 !important;
+                width: 100% !important;
+                display: flex;
+                justify-content: space-between !important;
+                margin-top: 8px !important;
+            }
+
+            .option {
+                width: 100%;
+            }
+        }
+    }
+}
+
+// Simplified styles for the modal that will appear in the root element
+
+// Move these styles outside any container
+.brand-selection-modal {
+    background-color: white !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid #E0E0E0 !important;
+    min-width: 320px !important;
+    max-height: 80vh !important; // Limit height to viewport height
+    overflow-y: auto !important; // Allow scrolling for overflow content
+    font-family: 'Inter', sans-serif !important;
+    transform-origin: top left !important;
+
+    // Simple fade-in animation
+    animation: modalFadeIn 0.2s ease-out !important;
+
+    @keyframes modalFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .brand-selection-content {
+        padding: 16px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+    }
+
+    .brand-selection-options {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        max-height: 300px !important;
+        overflow-y: auto !important;
+
+        .brand-selection-chip {
+            border: 1px solid #D8D8D8 !important;
+            border-radius: 16px !important;
+            padding: 8px 16px !important;
+            font-size: 14px !important;
+            background-color: white !important;
+            cursor: pointer !important;
+            transition: all 0.2s !important;
+
+            &:hover {
+                background-color: #f5f5f5 !important;
+            }
+
+            &.selected {
+                border-color: #0B74E5 !important;
+                color: #0B74E5 !important;
+                background-color: #EBF5FF !important;
+            }
+        }
+    }
+
+    .brand-selection-actions {
+        display: flex !important;
+        justify-content: space-between !important;
+        gap: 16px !important;
+        margin-top: 16px !important;
+
+        .reset-button,
+        .apply-button {
+            flex: 1 !important;
+            padding: 12px !important;
+            border-radius: 4px !important;
+            font-size: 14px !important;
+            cursor: pointer !important;
+            text-align: center !important;
+        }
+
+        .reset-button {
+            background-color: white !important;
+            border: 1px solid #D8D8D8 !important;
+            color: #38383D !important;
+
+            &:hover {
+                background-color: #f5f5f5 !important;
+            }
+        }
+
+        .apply-button {
+            background-color: #0B74E5 !important;
+            color: white !important;
+            border: none !important;
+
+            &:hover {
+                background-color: #0A66C2 !important;
+            }
+        }
+    }
+}
+
+// Add these styles at the very top level of your CSS file, outside any selector scope
+// This ensures they won't be affected by any parent rules
+
+body>.brand-selection-modal {
+    background-color: white !important;
+    border-radius: 0 !important;
+    /* Removed border radius */
+    box-shadow: none !important;
+    /* Removed box shadow */
+    border: none !important;
+    /* Removed border */
+    outline: none !important;
+    /* Removed outline */
+    min-width: 320px !important;
+    max-height: 80vh !important;
+    overflow-y: auto !important;
+    font-family: 'Inter', sans-serif !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+
+
+
+    .brand-selection-content {
+        padding: 16px !important;
+        // ...existing code...
+    }
+
+    // ...existing code...
+}
+
+// Also add a special class that we can use for debugging
+.debug-visible {
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: block !important;
+
+    outline: 5px solid red !important;
+}
+
+.sort-dropdown {
+    position: relative;
+    display: inline-block;
+
+    .sort-button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 12px;
+        font-size: 14px;
+        color: #38383D;
+        background: white;
+        border: 1px solid #D8D8D8;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background: #F5F5FA;
+            border-color: #C0C0C0;
+        }
+
+        svg {
+            margin-left: 8px;
+            width: 16px;
+            height: 16px;
+            color: #808089;
+        }
+    }
+
+    .sort-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 200px;
+        margin-top: 8px;
+        background: white;
+        border: 1px solid #E0E0E0;
+        border-radius: 4px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        display: none; // Hidden by default
+        flex-direction: column;
+
+        &.visible {
+            display: flex; // Show when active
+        }
+
+        .sort-item {
+            padding: 8px 12px;
+            font-size: 14px;
+            color: #38383D;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &:hover {
+                background: #F5F5FA;
+            }
+
+            &.selected {
+                background: #EBF5FF;
+                color: #0B74E5;
+
+                svg {
+                    color: #0B74E5;
+                }
+            }
+
+            svg {
+                width: 16px;
+                height: 16px;
+                color: #0B74E5;
+            }
+        }
+
+        .divider {
+            height: 1px;
+            background: #E0E0E0;
+            margin: 4px 0;
+        }
+    }
+}
+
+.sort-menu {
+    position: absolute;
+    background: white;
+    border: 1px solid #E0E0E0;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    flex-direction: column;
+
+    .sort-item {
+        padding: 8px 12px;
+        font-size: 14px;
+        color: #38383D;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &:hover {
+            background: #F5F5FA;
+        }
+
+        &.selected {
+            background: #EBF5FF;
+            color: #0B74E5;
+
+            svg {
+                color: #0B74E5;
+            }
+        }
+
+        svg {
+            width: 16px;
+            height: 16px;
+            color: #0B74E5;
+        }
+    }
+}
+
+.filter-product-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); // Add a background overlay
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .modal-content {
+        background: white;
+        border-radius: 8px;
+        padding: 16px;
+        max-width: 600px;
+        width: 100%;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+        overflow: hidden; // Prevent content overflow
+    }
+}
+
+// Brand modal styles
+.brand-modal-portal {
+    position: absolute;
+    z-index: 9999;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 90vw;
+    max-height: 80vh;
+    width: 450px;
+
+    .brand-selection-content {
+        padding: 16px;
+    }
+
+    .brand-selection-options {
+        position: relative;
+        max-height: 300px; // Limit the height of the scrollable area
+        overflow-y: scroll; // Enable vertical scrolling
+        padding-right: 8px; // Adjust padding as needed
+    }
+
+    .brand-selection-chip {
+        border-radius: 16px;
+        padding: 8px 16px;
+        font-size: 14px;
+        cursor: pointer;
+        background: white;
+        border: 1px solid #D8D8D8;
+        color: #38383D;
+
+        &.selected {
+            background: #EBF5FF;
+            color: #0B74E5;
+            border-color: #0B74E5;
+        }
+    }
+
+    .brand-selection-actions {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 16px;
+    }
+
+    .reset-button {
+        flex: 1;
+        padding: 12px;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+        background: white;
+        border: 1px solid #D8D8D8;
+        color: #38383D;
+
+        &:hover {
+            background: #f5f5f5;
+        }
+    }
+
+    .apply-button {
+        flex: 1;
+        padding: 12px;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+        background: #0B74E5;
+        color: white;
+        border: none;
+
+        &:hover {
+            background: #0A66C2;
+        }
+    }
+}
+
+// Supplier modal styles
+.supplier-modal-portal {
+    position: absolute;
+    z-index: 9999;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 90vw;
+    max-height: 80vh;
+    width: 450px;
+
+    .supplier-selection-content {
+        padding: 16px;
+    }
+
+    .supplier-selection-options {
+        position: relative;
+        max-height: 300px; // Limit the height of the scrollable area
+        overflow-y: scroll; // Enable vertical scrolling
+        padding-right: 8px; // Adjust padding as needed
+    }
+
+    .supplier-selection-chip {
+        border-radius: 16px;
+        padding: 8px 16px;
+        font-size: 14px;
+        cursor: pointer;
+        background: white;
+        border: 1px solid #D8D8D8;
+        color: #38383D;
+
+        &.selected {
+            background: #EBF5FF;
+            color: #0B74E5;
+            border-color: #0B74E5;
+        }
+    }
+
+    .supplier-selection-actions {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 16px;
+    }
+
+    .reset-button {
+        flex: 1;
+        padding: 12px;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+        background: white;
+        border: 1px solid #D8D8D8;
+        color: #38383D;
+
+        &:hover {
+            background: #f5f5f5;
+        }
+    }
+
+    .apply-button {
+        flex: 1;
+        padding: 12px;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+        background: #0B74E5;
+        color: white;
+        border: none;
+
+        &:hover {
+            background: #0A66C2;
+        }
+    }
+}
+
+// Sort menu styles
+.sort-menu-portal {
+    position: absolute;
+    background: white;
+    border: 1px solid #E0E0E0;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 200px;
+
+    .sort-item {
+        padding: 8px 12px;
+        font-size: 14px;
+        color: #38383D;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &:hover {
+            background: #F5F5FA;
+        }
+
+        &.selected {
+            background: #EBF5FF;
+            color: #0B74E5;
+        }
+
+        img {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}
