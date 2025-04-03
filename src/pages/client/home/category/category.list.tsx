@@ -1,6 +1,5 @@
 import { getCategoryAPI, getNameCategoryAPI } from "@/services/api";
 import { useEffect, useState } from "react";
-import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import ProductCard from "./category.ads";
 
 const CategoryExplorer = () => {
@@ -10,10 +9,16 @@ const CategoryExplorer = () => {
 
     // Hàm lấy danh mục con của từng category
     const showCategories = async (categoryName: string) => {
-        setExpandedCategories(prev => ({
-            ...prev,
-            [categoryName]: !prev[categoryName]
-        }));
+        setExpandedCategories(prev => {
+            const newState = Object.keys(prev).reduce((acc, key) => {
+                acc[key] = false; // Close all categories
+                return acc;
+            }, {} as { [key: string]: boolean });
+            return {
+                ...newState,
+                [categoryName]: !prev[categoryName] // Toggle the clicked category
+            };
+        });
 
         if (!expandedCategories[categoryName]) {
             const query = `name=${categoryName}`;
@@ -48,7 +53,16 @@ const CategoryExplorer = () => {
                                     <div className="sc-36d678cb-3 fZuZht">{item.label}</div>
                                 </a>
                                 <div className="sc-36d678cb-4 jMdDfP" onClick={() => showCategories(item.label)}>
-                                    {expandedCategories[item.label] ? <UpOutlined /> : <DownOutlined />}
+                                    <img
+                                        src="https://salt.tikicdn.com/cache/100x100/ts/ta/6c/37/a4/7ee5c72cc1c35b6b90b70b2ce3498215.png.webp"
+                                        alt="Toggle"
+                                        style={{
+                                            width: "20px",
+                                            height: "20px",
+                                            transform: expandedCategories[item.label] ? "rotate(0deg)" : "rotate(180deg)",
+                                            transition: "transform 0.3s ease"
+                                        }}
+                                    />
                                 </div>
                             </div>
                             {expandedCategories[item.label] && nameCategory[item.label] && (

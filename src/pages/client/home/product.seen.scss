@@ -1,0 +1,387 @@
+.fMrUyv {
+    margin: 16px 0px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 4px;
+}
+
+.hPpiPH {
+    color: rgb(51, 51, 51);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 32px;
+    padding: 8px 16px;
+    text-transform: capitalize;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 0px;
+}
+
+.fMrUyv .slider-container {
+    background-color: rgb(255, 255, 255);
+    border-radius: 4px;
+    overflow: hidden;
+    height: auto;
+    display: flex;
+}
+
+.iWkFxH {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slick-slider {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    user-select: none;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.iWkFxH .slick-arrow.slick-disabled {
+    cursor: default;
+    opacity: 0.3;
+
+    &:hover {
+        opacity: 0.3;
+    }
+}
+
+.iWkFxH .slick-arrow.slick-prev {
+    left: 10px;
+}
+
+.iWkFxH .slick-arrow {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    margin-top: -16px;
+    opacity: 0.3;
+    z-index: 1;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    path {
+        stroke: currentColor;
+    }
+}
+
+.iWkFxH .slick-arrow:not(.slick-disabled):hover {
+    opacity: 1;
+
+    svg path {
+        stroke: rgba(0, 0, 0, 0.8);
+    }
+}
+
+.iWkFxH .slick-arrow .icon {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    padding-right: 2px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 16px;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background-color: rgb(245, 245, 245);
+    }
+}
+
+a {
+    color: rgb(11, 116, 229);
+    text-decoration: none;
+}
+
+a {
+    background-color: transparent;
+}
+
+.fMrUyv .slider-container .slick-list {
+    margin: 0px -4px;
+    width: 100%;
+    height: auto;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+    transform: translate3d(0px, 0px, 0px);
+}
+
+.slick-list {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: auto;
+}
+
+.iWkFxH .slick-arrow.slick-next {
+    right: 10px;
+}
+
+.iWkFxH .slick-next {
+    transform: rotate(180deg);
+}
+
+.slick-track {
+    width: 1638px;
+    opacity: 1;
+    transform: translate3d(0px, 0px, 0px);
+    position: relative;
+    left: 0px;
+    top: 0px;
+    display: flex;
+    align-items: stretch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.iWkFxH .slick-track {
+    display: flex;
+}
+
+.tikicon.icon-arrow-back {
+    background-position: -392px -189px;
+    width: 8px;
+    height: 14px;
+}
+
+.tikicon {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.slick-slide .slick-active .slick-current {
+    outline: none;
+    width: 234px;
+}
+
+.fMrUyv .slider-container .slick-slide {
+    margin: 0px 4px;
+    height: auto;
+}
+
+.slick-initialized .slick-slide {
+    display: block;
+}
+
+.iWkFxH .slick-slide {
+    height: auto;
+}
+
+.slick-slide {
+    float: left;
+    height: auto;
+    min-height: 1px;
+    display: none;
+}
+
+.slick-slide>div {
+    height: 100%;
+}
+
+.slick-slide .faZNQQ {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.beJRlS {
+    position: relative;
+    padding-top: 100%;
+    overflow: hidden;
+    display: block;
+    background-color: rgb(255, 255, 255);
+    flex-shrink: 0;
+}
+
+.dWgHEM {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.dWgHEM img {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.faZNQQ {
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+
+    &:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+    }
+}
+
+.faZNQQ .info {
+    padding: 0px 0px 8px 0px;
+    margin: 0px 12px;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+    padding-bottom: 22px;
+}
+
+.faZNQQ .price.has-discount {
+    color: rgb(255, 66, 78);
+}
+
+.faZNQQ .price {
+    text-align: left;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    color: rgb(56, 56, 61);
+    margin: 2px 0px 0px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.title {
+    max-height: 40px;
+    height: auto;
+}
+
+.faZNQQ .title {
+    position: relative;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    max-height: 32px;
+    min-height: 0;
+    margin: 0 0 4px;
+    width: 100%;
+    color: rgb(36, 36, 36);
+    font-size: 12px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 16px;
+    letter-spacing: 0.1px;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-word;
+    flex: 1;
+    flex-grow: 1;
+}
+
+.faZNQQ .bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: normal;
+    align-self: stretch;
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+    right: 12px;
+}
+
+.faZNQQ .price.has-discount {
+    color: rgb(255, 66, 78);
+}
+
+.faZNQQ .price {
+    text-align: left;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    color: rgb(56, 56, 61);
+    margin: 2px 0px 0px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.faZNQQ .price.has-discount .percent {
+    padding: 0px 2px;
+    line-height: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-left: 4px;
+    color: rgb(255, 66, 78);
+    margin-top: 3px;
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+.faZNQQ .title h3 {
+    margin: 0px;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.kEvUyF {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    align-self: stretch;
+    margin-top: 1px;
+}
+
+.full-rating {
+    display: flex;
+    align-items: center;
+}
+
+.full-rating .total {
+    display: flex;
+    align-items: center;
+}
+
+.kEvUyF>div {
+    display: flex;
+    align-items: center;
+    height: 16px;
+}
+
+.kEvUyF>div>div[style*="width: 1px"] {
+    height: 12px;
+    margin: 0 6px;
+    align-self: center;
+}
+
+[data-view-id="pdp_quantity_sold"] {
+    display: flex;
+    align-items: center;
+    padding-left: 0 !important;
+    color: rgb(128, 128, 137);
+    line-height: normal;
+    font-size: 12px;
+}

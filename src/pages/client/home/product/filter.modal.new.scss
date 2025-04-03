@@ -1,0 +1,586 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    /* Slightly lower than the modal's z-index */
+}
+
+.fgRNmz {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: calc(-64px + 100vh);
+    width: 566px;
+    overflow: hidden;
+    z-index: 9999;
+    background: rgb(255, 255, 255);
+    border-radius: 8px;
+}
+
+.boGFxq {
+    position: relative;
+    padding: 16px 40px;
+    text-align: center;
+    border-bottom: 1px solid rgb(235, 235, 240);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.boGFxq .btn-close {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.boGFxq .btn-close img {
+    width: 25px;
+    height: 25px;
+}
+
+.boGFxq .title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 150%;
+    color: rgb(39, 39, 42);
+}
+
+.kXxzcv {
+    height: calc(100% - 132px);
+    padding: 24px 10px;
+    overflow: hidden auto;
+}
+
+.bubSYk {
+    display: flex;
+    padding: 16px 24px;
+    border-top: 1px solid rgb(235, 235, 240);
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.kXxzcv>.top-filter {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    border-bottom: none;
+}
+
+.kXxzcv> :not(:last-child) {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgb(235, 235, 240);
+}
+
+
+
+.kvcRVh {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 8px;
+}
+
+.kvcRVh>* {
+    flex: 0 0 calc(50% - 4px);
+}
+
+.hxysjC {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.hxysjC>* {
+    flex-shrink: 0;
+}
+
+.Ywrhm {
+    display: flex;
+    cursor: pointer;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.vQcnP {
+    display: block;
+    object-fit: contain;
+    height: 20px;
+    width: auto;
+    margin-right: 8px;
+}
+
+.hCmoWw {
+    font-size: 14px;
+    line-height: 21px;
+    color: rgb(39, 39, 42);
+}
+
+.Ywrhm .box>img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.hCmoWw span {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.cBZRwi {
+    padding: 8px 12px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    border-radius: 4px;
+    cursor: pointer;
+    color: rgb(39, 39, 42);
+    border: 1px solid rgb(221, 221, 227);
+}
+
+.UkSzZ {
+    padding: 8px 12px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    border-radius: 4px;
+    cursor: pointer;
+    background: rgb(10, 104, 255);
+    color: rgb(255, 255, 255);
+}
+
+.icon-check-on,
+.icon-check-off {
+    display: none;
+}
+
+.icon-check-on.visible,
+.icon-check-off.visible {
+    display: block;
+}
+
+.item {
+    cursor: pointer;
+}
+
+.hide {
+    display: none;
+}
+
+.toggler {
+    display: block;
+    margin-top: 8px;
+    color: #0a68ff;
+    cursor: pointer;
+    text-align: center;
+}
+
+.filter-modal-container {
+    .modal-wrapper {
+        width: 566px !important;
+        position: relative;
+        z-index: 9999;
+
+        .ant-modal-content {
+            padding: 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .ant-modal-title {
+            text-align: center;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 150%;
+            color: rgb(39, 39, 42);
+        }
+    }
+
+    .modal-content {
+        padding: 0 16px;
+
+        h4 {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 150%;
+            color: rgb(39, 39, 42);
+            margin-bottom: 16px;
+        }
+
+        .service-icon,
+        .promotion-icon {
+            height: 17px;
+            width: auto;
+            object-fit: contain;
+
+            margin-right: 8px;
+        }
+
+        .rating-stars {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            font-size: 14px;
+            color: rgb(39, 39, 42);
+        }
+
+        .price-buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+
+            .price-button {
+                position: relative;
+                margin-right: 8px;
+                margin-bottom: 8px;
+                display: inline-block;
+                padding: 5.5px 12px;
+                border: 1px solid rgb(221, 221, 227);
+                border-radius: 16px;
+                color: rgb(39, 39, 42);
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 150%;
+                cursor: pointer;
+
+                &:hover {
+                    border-color: rgb(10, 104, 255);
+                    color: rgb(10, 104, 255);
+                }
+            }
+        }
+
+        .price-range-container {
+            margin-top: 12px;
+            padding-bottom: 8px;
+            color: rgb(39, 39, 42);
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 150%;
+        }
+
+        .price-separator {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            color: rgb(39, 39, 42);
+        }
+
+        .full-width-input {
+            width: 100%;
+        }
+
+        .show-more-less {
+            display: block;
+            margin-top: 16px;
+            color: rgb(39, 39, 42);
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 150%;
+            text-decoration-line: underline;
+            cursor: pointer;
+        }
+    }
+}
+
+// Add styles for the custom checkboxes
+.custom-checkbox {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgb(39, 39, 42);
+    margin-bottom: 8px;
+
+    .checkbox-box {
+        position: relative;
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+        flex-shrink: 0;
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        .icon-check-on,
+        .icon-check-off {
+            display: none;
+        }
+
+        .icon-check-on.visible,
+        .icon-check-off.visible {
+            display: block;
+        }
+
+        .icon-check-hover {
+            display: none;
+        }
+    }
+
+    &:hover {
+        .checkbox-box {
+
+            .icon-check-on:not(.visible),
+            .icon-check-off:not(.visible) {
+                display: none;
+            }
+
+            .icon-check-hover {
+                display: block;
+            }
+        }
+    }
+
+    .checkbox-content {
+        display: flex;
+        align-items: center;
+
+        .service-icon,
+        .promotion-icon {
+            height: 17px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .checkbox-text {
+            display: inline-block;
+        }
+    }
+}
+
+.filter-options-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    .custom-checkbox {
+        flex: 0 0 calc(50% - 4px);
+        margin-bottom: 8px;
+    }
+}
+
+.ant-checkbox-wrapper {
+    align-items: flex-start;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgb(39, 39, 42);
+}
+
+.ant-checkbox {
+    top: 1px;
+}
+
+.ant-divider {
+    margin: 16px 0;
+}
+
+.ant-input-number-group-wrapper {
+    width: 100%;
+}
+
+.ant-input-number-wrapper {
+    width: 100%;
+}
+
+.ant-input-number-affix-wrapper {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.filter-form .ant-row {
+    margin-bottom: 0;
+}
+
+/* Specific styles for the filter structure */
+.sc-6a0d1b22-0.bUkXlp {
+    margin-bottom: 16px;
+
+    .title {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 150%;
+        color: rgb(39, 39, 42);
+        margin-bottom: 12px;
+    }
+}
+
+.sc-6a0d1b22-1.kvcRVh {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    >div {
+        flex: 0 0 calc(50% - 4px);
+    }
+}
+
+.sc-aaa42ade-0.hxysjC {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 0;
+}
+
+.sc-eca64225-3.Ywrhm {
+    position: relative;
+    margin-right: 8px;
+
+    .box {
+        display: inline-block;
+        position: relative;
+        width: 24px;
+        height: 24px;
+    }
+
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 24px;
+        height: 24px;
+        display: none;
+    }
+
+    .icon-check-on.visible,
+    .icon-check-off.visible {
+        display: block;
+    }
+
+    &:hover {
+
+        .icon-check-on:not(.visible),
+        .icon-check-off:not(.visible) {
+            display: none;
+        }
+
+        .icon-check-hover {
+            display: block;
+        }
+    }
+}
+
+.sc-aaa42ade-1.vQcnP {
+    height: 16px;
+    margin-right: 8px;
+    object-fit: contain;
+}
+
+.sc-aaa42ade-2.hCmoWw {
+    font-size: 14px;
+    line-height: 20px;
+    color: rgb(39, 39, 42);
+
+    .rating-stars {
+        display: flex;
+        align-items: center;
+        gap: 1px;
+
+        svg {
+            margin-right: -1px;
+        }
+
+        span {
+            margin-left: 4px;
+        }
+    }
+}
+
+.sc-63e2c595-3.ikRKtr {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 10px;
+
+    .price-input-container {
+        display: flex;
+        position: relative;
+        align-items: center;
+        width: 100%;
+    }
+
+    .group {
+        position: relative;
+        flex: 0 0 calc(40% - 8px);
+        height: 36px;
+
+        input {
+            width: 100%;
+            height: 100%;
+            padding: 8px 32px 8px 12px;
+            border: 1px solid #dddde3;
+            border-radius: 4px;
+            outline: none;
+            font-size: 14px;
+
+            &:focus {
+                border-color: #0a68ff;
+            }
+        }
+
+        span {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #808089;
+            font-size: 14px;
+        }
+
+        img {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+    }
+
+    .separator {
+        margin: 0 8px;
+        color: #808089;
+    }
+
+    .price-error {
+        width: 100%;
+        margin-top: 8px;
+        font-size: 12px;
+        line-height: 16px;
+        color: #ff424f;
+    }
+
+    .btn-delete {
+        margin-left: 8px;
+        padding: 8px 12px;
+        color: rgb(10, 104, 255);
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 150%;
+        cursor: pointer;
+        flex: 0 0 auto;
+    }
+}

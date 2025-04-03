@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const BookShopComponent = () => {
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    const toggleExpand = () => {
+        setIsExpanded(!isExpanded);
+    };
+
     return (
         <div className="sc-751f17f-0 eBbdNe">
             <div className="group">
                 <h2 className="sc-9ee36b14-0 hPpiPH">Thông Tin Danh mục</h2>
                 <div className="content">
                     <div className="sc-f5219d7f-1 jBwezC">
-                        <div className="sc-f5219d7f-0 haxTPb">
+                        <div className="sc-f5219d7f-0 haxTPb" style={{
+                            maxHeight: isExpanded ? 'none' : '300px',
+                            overflow: isExpanded ? 'visible' : 'hidden',
+                            position: 'relative'
+                        }}>
                             <div>
                                 <p dir="ltr">Nhà sách là một trong những địa điểm đã gắn liền với tuổi thơ của nhiều người. Nơi đây không chỉ cung cấp cho chúng ta một nguồn kho tàng tri thức quý giá mà còn bày bán rất nhiều món <a href="https://tiki.vn/qua-luu-niem/c18328">quà lưu niệm</a> đáng yêu cùng vô vàn món <a href="https://tiki.vn/van-phong-pham-qua-luu-niem/c7741">văn phòng phẩm</a> khác. Cùng Tiki tìm hiểu thêm những điều thú vị tại nhà sách qua bài viết dưới đây nhé.</p>
                                 <h2 dir="ltr">Nhà sách - Thế giới tri thức và tinh hoa nhân loại</h2>
@@ -69,7 +79,17 @@ const BookShopComponent = () => {
                                 <p dir="ltr">Có thể nói nhà sách Tiki chính là thiên đường để mua sắm các dụng cụ học tập, các thể loại sách dành cho mọi lứa tuổi từ học sinh, sinh viên cho đến người đã đi làm như <a href="https://tiki.vn/tam-ly-gioi-tinh/c868">sách tâm lý - giới tính</a>, <a href="https://tiki.vn/y-hoc/c885">sách y học</a>, <a href="https://tiki.vn/tap-chi-catalogue/c1468">tạp chí</a>,... "Tiết kiệm chi phí - Tiết kiệm thời gian" chính là những tiện ích mà chúng ta có thể tìm thấy tại Tiki.</p>
                                 <p dir="ltr">Mua sắm văn phòng phẩm và sách ở đâu vừa nhanh gọn vừa dễ dàng? Bật mí là ở nhà sách Tiki đấy nhé. Nếu các bạn đang chuẩn bị bước vào năm học mới hay đang tìm mua một quyển sách nào đó, đừng ngần ngại mà lên Tiki ngay.</p>
                             </div>
+                            {!isExpanded && (
+                                <div className="gradient"></div>
+                            )}
                         </div>
+                        <a
+                            className="btn-more"
+                            data-view-id="pdp_view_description_button"
+                            onClick={toggleExpand}
+                        >
+                            {isExpanded ? 'Thu gọn' : 'Xem thêm'}
+                        </a>
                     </div>
                 </div>
             </div>

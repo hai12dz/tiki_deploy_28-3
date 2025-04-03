@@ -1,0 +1,344 @@
+:root {
+    --header-bottom: 0px;
+    --content-start: 0px;
+    /* Position where content below header/commitment bar starts */
+    --header-height: 0px;
+    --transition-speed: 0.1s; // Even faster transition
+}
+
+// Body styles when search modal is open - maintain normal scrolling
+body.search-modal-open {
+    overflow-y: auto; // Allow scrolling
+}
+
+.search-container {
+    position: relative;
+    width: 100%;
+}
+
+// Dynamic overlay that stays fixed but adjusts position
+.search-overlay {
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 200;
+    pointer-events: none; // Allow clicks to pass through to elements underneath
+    transition: opacity 0.05s ease; // Adjust transition for instant appearance
+    will-change: opacity; // Hint for browser to optimize
+}
+
+// Special styling for typing overlay - Make this important and with no transition
+.typing-overlay {
+    background-color: rgba(0, 0, 0, 0.5) !important; // Force immediate color
+    opacity: 1 !important;
+    transition: none !important;
+}
+
+// Search modal styling
+.search-modal-visible {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 1000 !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.28);
+    transition: all var(--transition-speed) ease-out; // Add faster transition
+    will-change: transform, opacity; // Hint for browser to optimize
+}
+
+.iNGxKa {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.28);
+    border-radius: 0 0 3px 3px;
+    border-top: 1px solid #e1e1e1;
+    z-index: 999;
+}
+
+.fjnTfW .promo:first-child {
+    border-top: 0px;
+}
+
+.fjnTfW .promo>a {
+    position: absolute;
+    font-size: 0px;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.fjnTfW .promo>.keyword {
+    flex: 1 1 0%;
+}
+
+.fjnTfW .promo>.webpimg-container {
+    height: 28px;
+}
+
+.fjnTfW .promo {
+    padding: 8px 16px 8px 22px;
+    color: rgb(36, 36, 36);
+    font-size: 13px;
+    line-height: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    border-top: 1px solid rgb(242, 242, 242);
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+}
+
+.fjnTfW .promo>.webpimg-container img {
+    border-radius: 4px;
+}
+
+.ldcZGa {
+    object-fit: contain;
+    display: block;
+}
+
+.hilSzk .item:first-child {
+    border-top: 0px;
+}
+
+.hilSzk .item {
+    color: rgb(39, 39, 42);
+    font-size: 14px;
+    line-height: 150%;
+    height: 36px;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0px 16px;
+}
+
+.hilSzk .item.hide {
+    display: none;
+}
+
+.hilSzk .show-more {
+    font-size: 12px;
+    line-height: 1.67;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    color: rgb(13, 92, 182);
+}
+
+.hilSzk .show-more>div {
+    display: flex;
+    padding: 6px 16px;
+    -webkit-box-align: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.hilSzk .show-more .show-more__icon {
+    margin-left: 8px;
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+}
+
+/* Add class for rotated icon when expanded */
+.hilSzk .show-more .show-more__icon.rotate-180 {
+    transform: rotate(270deg);
+}
+
+.brtKKD {
+    background-color: rgb(255, 255, 255);
+    padding: 8px 12px 12px;
+    border-top: 1px solid rgb(242, 242, 242);
+}
+
+.hXsySQ {
+    background-color: rgb(255, 255, 255);
+    padding: 8px 12px 12px;
+    border-top: 1px solid rgb(242, 242, 242);
+}
+
+.brtKKD .wrap-heading {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 15px;
+    line-height: 24px;
+    padding: 0px 0px 8px;
+}
+
+.brtKKD .inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 8px;
+}
+
+.brtKKD .trending {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+.brtKKD .inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 8px;
+}
+
+.brtKKD .item {
+    font-size: 12px;
+    line-height: 1.67;
+    display: flex;
+    background: rgb(250, 250, 250);
+    color: rgb(36, 36, 36);
+    text-decoration: none;
+}
+
+.brtKKD .item .thumb {
+    width: 38px;
+    height: 38px;
+    margin-right: 8px;
+    object-fit: contain;
+}
+
+.brtKKD .item>.title {
+    font-size: 12px;
+    line-height: 16px;
+    margin: 4px 0px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.hXsySQ .wrap-heading {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 15px;
+    line-height: 24px;
+    padding: 0px 0px 8px;
+}
+
+.hXsySQ .inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 12px 8px;
+}
+
+.hXsySQ .item {
+    font-size: 12px;
+    line-height: 1.67;
+    display: flex;
+    flex-direction: column;
+    color: rgb(36, 36, 36);
+    text-decoration: none;
+}
+
+.hilSzk .item>.item-icon {
+    width: 35px;
+    height: 35px;
+}
+
+.hXsySQ .item>.thumb-wrap {
+    padding: 0px 40px;
+}
+
+.hXsySQ .item>.thumb-wrap .thumb {
+    width: 100%;
+    padding-top: 100%;
+    border-radius: 36%;
+    position: relative;
+    overflow: hidden;
+    background: rgb(250, 250, 250);
+}
+
+.hXsySQ .item>.thumb-wrap .thumb>img {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.hXsySQ .item>.title {
+    font-size: 12px;
+    line-height: 16px;
+    padding: 6px 0px 0px;
+    text-align: center;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+// Add transition for content sections that appear/disappear
+.sc-1a8f85ba-0,
+.sc-77bd3e1f-0 {
+    transition: opacity var(--transition-speed) ease-out, height var(--transition-speed) ease-out, padding var(--transition-speed) ease-out;
+    will-change: opacity, height, padding; // Hint for browser to optimize
+}
+
+// Add style for typing state - only show suggestions
+.typing-active {
+    transition: none !important;
+
+    .sc-1a8f85ba-0,
+    .sc-77bd3e1f-0 {
+        opacity: 0;
+        height: 0;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        pointer-events: none;
+        transition: none !important;
+    }
+
+    .sc-66af1b06-0 {
+        border-radius: 0 0 3px 3px;
+    }
+}
+
+.loading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    gap: 12px;
+    color: #0d5cb6;
+}
+
+.empty-suggestions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    color: #808089;
+    font-style: italic;
+}
+
+// Simplify the empty suggestions message
+.empty-suggestions-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    color: #808089;
+    font-style: italic;
+    min-height: 50px; // Ensure enough space for message
+}

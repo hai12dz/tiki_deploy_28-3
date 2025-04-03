@@ -119,13 +119,6 @@ declare global {
 
     }
 
-
-
-
-
-
-
-
     interface ISupplier {
         id: string;
         name: string,
@@ -135,7 +128,6 @@ declare global {
 
     }
 
-
     interface IBrands {
 
         id: string;
@@ -144,12 +136,7 @@ declare global {
         createdAt: Date;
         updatedAt: Date;
 
-
     }
-
-
-
-
 
     interface ICategory {
         id: string;
@@ -157,7 +144,9 @@ declare global {
         url: string
     }
 
-
-
+    interface ISearchSuggestion {
+        id: number;
+        keyword: string;
+    }
 }
 

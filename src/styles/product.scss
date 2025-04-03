@@ -1,6 +1,5 @@
 .product-container {
     border: 1px solid #f0f0f0;
-    border-radius: 16px;
     margin-top: 10px;
     width: 81.5%;
     display: flex;
@@ -268,6 +267,68 @@
         }
     }
 
+    // View More button styling
+    .view-more-container {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+
+        .view-more-button {
+            cursor: pointer;
+            display: inline-block;
+            width: 240px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: 1px solid rgb(10, 104, 255);
+            color: rgb(10, 104, 255);
+            font-size: 16px;
+            line-height: 150%;
+            font-weight: 400;
+            text-align: center;
+
+            &:hover {
+                background-color: #f2f8ff;
+            }
+
+            .loading-dots {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                span {
+                    width: 6px;
+                    height: 6px;
+                    margin: 0 3px;
+                    background: #0B74E5;
+                    border-radius: 50%;
+                    animation: dots 1.5s infinite ease-in-out;
+
+                    &:nth-child(2) {
+                        animation-delay: 0.5s;
+                    }
+
+                    &:nth-child(3) {
+                        animation-delay: 1s;
+                    }
+                }
+
+                @keyframes dots {
+
+                    0%,
+                    100% {
+                        transform: scale(0.75);
+                        opacity: 0.5;
+                    }
+
+                    50% {
+                        transform: scale(1);
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+
     @media screen and (max-width: 992px) {
         .column {
             width: calc(33.33% - 12px);
@@ -285,4 +346,17 @@
             width: 100%;
         }
     }
+}
+
+.no-product-container {
+    >div ::before {
+
+        background-image: url(https://salt.tikicdn.com/desktop/img/icon-svg/icon-warning.svg);
+        content: "";
+        width: 16px;
+        height: 17px;
+        margin-right: 12px;
+
+    }
+
 }

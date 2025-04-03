@@ -6,6 +6,7 @@ import {
     Row, Col, Form, Checkbox, Divider, InputNumber,
     Button, Rate, Tabs, Pagination, Spin
 } from 'antd';
+import 'styles/general.scss';
 import type { FormProps } from 'antd';
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useOutletContext } from 'react-router-dom';
@@ -27,7 +28,7 @@ import BookShopComponent from './home/danhmuc';
 import RelatedSearch from './home/related.search';
 import TikiBestsellers from './home/best.seller';
 import Product from './home/product/product';
-
+import FooterWeb from './home/footer';
 
 
 type FieldType = {
@@ -50,6 +51,7 @@ const HomePage = () => {
     }[]>([]);
 
     const [listBook, setListBook] = useState<IBookTable[]>([]);
+    const [sharedListBook, setSharedListBook] = useState<IBookTable[]>([]);
     const [current, setCurrent] = useState<number>(1);
     const [pageSize, setPageSize] = useState<number>(10);
     const [total, setTotal] = useState<number>(0);
@@ -322,9 +324,16 @@ const HomePage = () => {
                         <CategoryExplorer />
 
                         <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
-                            <TikiBookstore />
+                            <TikiBookstore
+                                isLoading={isLoading}
+                                setIsLoading={setIsLoading}
+                                onListBookChange={setSharedListBook} />
+
                             <div className="product-wrapper">
-                                <Product />
+                                <Product
+                                    isLoading={isLoading}
+                                    setIsLoading={setIsLoading}
+                                    listBook={sharedListBook} />
                             </div>
                         </div>
 
@@ -338,8 +347,8 @@ const HomePage = () => {
                     <TikiBestsellers />
 
 
-
                 </div>
+                <FooterWeb />
 
 
 

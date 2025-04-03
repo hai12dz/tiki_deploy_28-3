@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { SearchOutlined, HomeOutlined, UserOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import { Badge, Popover, Empty, message, Input, Dropdown, Space, Avatar } from 'antd';
 import { FiShoppingCart } from 'react-icons/fi';
@@ -8,6 +8,7 @@ import { logoutAPI } from '@/services/api';
 import ManageAccount from '../client/account';
 import { isMobile } from 'react-device-detect';
 import './app.new.header.scss';
+import SearchProducts from './search/search';
 
 interface IProps {
     searchTerm: string;
@@ -15,6 +16,57 @@ interface IProps {
 }
 
 const AppHeader = (props: IProps) => {
+    const [isSearchVisible, setIsSearchVisible] = useState<boolean>(false);
+    const [searchTerm, setSearchTerm] = useState<string>('');
+    const [currentPlaceholder, setCurrentPlaceholder] = useState<string>("Freeship đơn từ 45k");
+
+    const placeholders = [
+        "Hoàn 200% nếu hàng giả",
+        "Freeship đơn từ 45k",
+        "Giá siêu rẻ",
+        "Giao nhanh 2h",
+        "100% hàng thật"
+    ];
+
+    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        console.log("Header input change:", value);
+        setSearchTerm(value);
+    };
+
+    useEffect(() => {
+        let currentIndex = 0;
+
+        const intervalId = setInterval(() => {
+            currentIndex = (currentIndex + 1) % placeholders.length;
+            setCurrentPlaceholder(placeholders[currentIndex]);
+        }, 3000);
+
+        return () => clearInterval(intervalId);
+    }, []);
+
+    const showSearchModal = () => {
+        console.log("Opening search modal");
+        setIsSearchVisible(true);
+    };
+
+    const hideSearchModal = () => {
+        console.log("Closing search modal");
+        setIsSearchVisible(false);
+    };
+
+    const handleSearchSubmit = () => {
+        console.log("Search submitted with term:", searchTerm);
+        props.setSearchTerm(searchTerm);
+        setSearchTerm('');
+        hideSearchModal();
+    };
+
+    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            handleSearchSubmit();
+        }
+    };
 
     const commitments = [
         { src: "https://salt.tikicdn.com/ts/upload/96/76/a3/16324a16c76ee4f507d5777608dab831.png", text: "100% hàng thật" },
@@ -25,34 +77,33 @@ const AppHeader = (props: IProps) => {
         { src: "https://salt.tikicdn.com/ts/upload/6a/81/06/0675ef5512c275a594d5ec1d58c37861.png", text: "Giá siêu rẻ" }
     ];
 
-
     return (
         <>
-            <div style={{ position: "relative", zIndex: 999 }}>
-                <a href="https://tiki.vn/khuyen-mai/ngay-hoi-freeship?from=inline_banner">
-                    <div style={{ backgroundColor: "#EFFFF4" }} className="jfMKyG">
-                        <div style={{ color: "#00AB56" }} className="cGVtRR">
-                            Freeship đơn từ 45k, giảm nhiều hơn cùng
+            <div className="header-wrapper">
+                <div className="top-banner">
+                    <a href="https://tiki.vn/khuyen-mai/ngay-hoi-freeship?from=inline_banner">
+                        <div style={{ backgroundColor: "#EFFFF4" }} className="jfMKyG">
+                            <div style={{ color: "#00AB56" }} className="cGVtRR">
+                                Freeship đơn từ 45k, giảm nhiều hơn cùng
+                            </div>
+                            <picture className="webpimg-container">
+                                <source
+                                    type="image/webp"
+                                    srcSet="https://salt.tikicdn.com/ts/upload/a7/18/8c/910f3a83b017b7ced73e80c7ed4154b0.png"
+                                />
+                                <img
+                                    srcSet="https://salt.tikicdn.com/ts/upload/a7/18/8c/910f3a83b017b7ced73e80c7ed4154b0.png"
+                                    className="fvWcVx title-img"
+                                    alt="icon"
+                                    width="79"
+                                    height="16"
+                                    style={{ width: "79px", height: "16px", opacity: 1 }}
+                                />
+                            </picture>
                         </div>
-                        <picture className="webpimg-container">
-                            <source
-                                type="image/webp"
-                                srcSet="https://salt.tikicdn.com/ts/upload/a7/18/8c/910f3a83b017b7ced73e80c7ed4154b0.png"
-                            />
-                            <img
-                                srcSet="https://salt.tikicdn.com/ts/upload/a7/18/8c/910f3a83b017b7ced73e80c7ed4154b0.png"
-                                className="fvWcVx title-img"
-                                alt="icon"
-                                width="79"
-                                height="16"
-                                style={{ width: "79px", height: "16px", opacity: 1 }}
-                            />
-                        </picture>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
 
-            <div>
                 <header id="main-header" className="rgsXe">
                     <div className="edZgU">
                         <div className="duXRBJ">
@@ -71,7 +122,7 @@ const AppHeader = (props: IProps) => {
                                 <div className="gypTeU">
                                     <div className="hqCsjg">
                                         <div className="cYLtAT">
-                                            <div className="cfhkdd">
+                                            <div className="cfhkdd" style={{ position: 'relative' }}>
                                                 <img
                                                     className="icon-search"
                                                     src="https://salt.tikicdn.com/ts/upload/33/d0/37/6fef2e788f00a16dc7d5a1dfc5d0e97a.png"
@@ -80,16 +131,30 @@ const AppHeader = (props: IProps) => {
                                                 <input
                                                     data-view-id="main_search_form_input"
                                                     type="text"
-                                                    placeholder="Freeship đơn từ 45k"
+                                                    placeholder={currentPlaceholder}
                                                     className="lgENLJ"
-                                                    defaultValue=""
+                                                    value={searchTerm}
+                                                    onChange={handleSearchChange}
+                                                    onClick={showSearchModal}
+                                                    onFocus={showSearchModal}
+                                                    onKeyPress={handleKeyPress}
                                                 />
                                                 <button
                                                     data-view-id="main_search_form_button"
                                                     className="agnbj"
+                                                    onClick={handleSearchSubmit}
                                                 >
                                                     Tìm kiếm
                                                 </button>
+
+                                                {isSearchVisible && (
+                                                    <SearchProducts
+                                                        isVisible={isSearchVisible}
+                                                        onClose={hideSearchModal}
+                                                        searchTerm={searchTerm}
+                                                        onSearch={handleSearchSubmit}
+                                                    />
+                                                )}
                                             </div>
                                         </div>
                                     </div>
@@ -147,7 +212,8 @@ const AppHeader = (props: IProps) => {
                         </div>
                     </div>
                 </header>
-                <div style={{ backgroundColor: "white" }} className="sc-cc99b0e2-0 fzFpkg">
+
+                <div className="sc-cc99b0e2-0 fzFpkg">
                     <a href="https://tiki.vn/thong-tin/tiki-doi-tra-de-dang-an-tam-mua-sam" className="sc-cc99b0e2-1 klHtaf">
                         <div style={{ color: "#003EA1" }} className="sc-cc99b0e2-2 iMmKHC">Cam kết</div>
                         <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
@@ -168,16 +234,9 @@ const AppHeader = (props: IProps) => {
                         </div>
                     </a>
                 </div>
-
-
-
-
-
-
-
-
             </div>
 
+            <div id="header-spacer" style={{ display: 'none' }}></div>
         </>
     );
 };

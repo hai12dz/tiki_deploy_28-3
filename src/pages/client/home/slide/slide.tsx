@@ -47,6 +47,7 @@ const CarouselComponent = () => {
                     <div className="sc-6be5dba8-1 jZIHwB">
                         <div className="sc-aeef9a0f-1 bxiHoX"></div>
                         <img
+                            style={{ width: "121px", height: "121px" }}
                             src="https://salt.tikicdn.com/ts/tka/1c/a1/00/32b0e70d3c6db98a03f300e89480bc72.png"
                             alt="1980 Books Tại Tiki Trading" className="sc-6be5dba8-2 euPenc" />
                     </div>
@@ -148,6 +149,7 @@ const CarouselComponent = () => {
                     <div className="sc-6be5dba8-1 jZIHwB">
                         <div className="sc-aeef9a0f-1 bxiHoX"></div>
                         <img
+                            style={{ width: "121px", height: "121px" }}
                             src="https://salt.tikicdn.com/ts/tka/1c/a1/00/32b0e70d3c6db98a03f300e89480bc72.png"
                             alt="1980 Books Tại Tiki Trading" className="sc-6be5dba8-2 euPenc" />
                     </div>
@@ -168,7 +170,7 @@ const CarouselComponent = () => {
                         </div>
                         <div style={{ marginTop: "auto" }}>
                             <div style={{ display: "flex", alignItems: "center" }}>
-                                <button onClick={scrollLeft2} className='scroll-button-left' ></button>
+                                <button onClick={scrollLeft2} className='scroll-button-left'></button>
                                 <div
                                     ref={productListRef2}
                                     style={{
@@ -229,12 +231,10 @@ const CarouselComponent = () => {
                                 </div>
                                 <button onClick={scrollRight2} className="scroll-button-right"></button>
 
-
                             </div>
                             <div className="sc-6be5dba8-4 gyfMKP"></div>
                         </div>
                     </div>
-
                     <a
                         href="https://tiki.vn/sach-truyen-tieng-viet/c316?itm_campaign=CTP_YPD_TKA_BSA_UNK_ALL_UNK_UNK_UNK_UNK_X.273103_Y.1855423_Z.3857321_CN.%255BStore-Ads%255D-1980s&amp;itm_medium=CPC&amp;itm_source=tiki-ads&amp;publisher_vn=33244&amp;seller=1&amp;sort=newest"
                         target="_blank"

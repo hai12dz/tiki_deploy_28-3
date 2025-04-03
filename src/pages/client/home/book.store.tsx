@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import { getFullCategories } from "@/services/api";
 import MyCarousel from "./slide/carousel";
-import { Button } from "antd";
-import { FilterTwoTone } from "@ant-design/icons";
-import FilterProduct from "./product/filter.product";
 import ProductFilter from "./product/filter.product";
 
+// Add a proper interface for the component props
+interface TikiBookstoreProps {
+    onListBookChange: (books: IBookTable[]) => void;
+    isLoading: boolean;
+    setIsLoading: (loading: boolean) => void;
 
+}
 
-const TikiBookstore = () => {
+const TikiBookstore: React.FC<TikiBookstoreProps> = ({ onListBookChange, isLoading, setIsLoading }) => {
     const [listFullCategory, setListFullCategory] = useState<ICategory[]>([]);
 
     useEffect(() => {
@@ -43,15 +46,15 @@ const TikiBookstore = () => {
                 </div>
             </div>
 
-
             <div className="sc-9f1e84db-0 hzwFlv">
                 <div className="sc-9f1e84db-2 cASiea">Tất cả sản phẩm</div>
                 <div>
-                    <ProductFilter />
-
+                    {/* Only keep the ProductFilter here and pass the callback function */}
+                    <ProductFilter
+                        isLoading={isLoading}
+                        setIsLoading={setIsLoading}
+                        onListBookChange={onListBookChange} />
                 </div>
-
-
             </div>
         </div>
     );
