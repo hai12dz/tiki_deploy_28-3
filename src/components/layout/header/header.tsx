@@ -4,6 +4,7 @@ import SearchProducts from '../search/search'
 
 const Header: React.FC = () => {
     const [isSearchVisible, setIsSearchVisible] = useState<boolean>(false);
+    const [searchTerm, setSearchTerm] = useState<string>('');
 
     const showSearch = (): void => {
         console.log("Showing search modal");
@@ -30,6 +31,7 @@ const Header: React.FC = () => {
                     <SearchProducts
                         isVisible={isSearchVisible}
                         onClose={hideSearch}
+                        searchTerm={searchTerm}
                     />
                 )}
             </div>
