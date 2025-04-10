@@ -196,3 +196,10 @@
 html {
     scroll-behavior: smooth;
 }
+
+// Breadcrumb styling
+.ant-breadcrumb,
+.breadcrumb-container,
+.tiki-breadcrumb {
+    margin-bottom: 10px; // Use !important to ensure it overrides existing styles
+}

@@ -1,8 +1,71 @@
-import React from 'react';
+import React, { useRef } from 'react';
+
+// Add scrollbar styles from slide.tsx
+const scrollbarStyles = `
+  .custom-scrollbar::-webkit-scrollbar {
+    width: auto !important; /* Force default width */
+    height: auto !important; /* Force default height */
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #888888; /* Darker gray color */
+    border-radius: 10px;
+  }
+  .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+    background-color: #ababab;
+  }
+  .custom-scrollbar {
+    scrollbar-width: auto; /* Use default size for Firefox */
+    scrollbar-color: #888888 transparent; /* Match the darker color for Firefox */
+  }
+  .custom-scrollbar:hover {
+    scrollbar-color: #ababab transparent;
+  }
+`;
 
 const TikiAdsComponent = () => {
+    // Create refs for product carousels
+    const productListRef1 = useRef<HTMLDivElement>(null);
+    const productListRef2 = useRef<HTMLDivElement>(null);
+
+    // Scroll functions for first carousel
+    const scrollLeft1 = (event: React.MouseEvent) => {
+        event.preventDefault();
+        event.stopPropagation();
+        if (productListRef1.current) {
+            productListRef1.current.scrollBy({ left: -100, behavior: "smooth" });
+        }
+    };
+
+    const scrollRight1 = (event: React.MouseEvent) => {
+        event.preventDefault();
+        event.stopPropagation();
+        if (productListRef1.current) {
+            productListRef1.current.scrollBy({ left: 100, behavior: "smooth" });
+        }
+    };
+
+    // Scroll functions for second carousel
+    const scrollLeft2 = (event: React.MouseEvent) => {
+        event.preventDefault();
+        event.stopPropagation();
+        if (productListRef2.current) {
+            productListRef2.current.scrollBy({ left: -100, behavior: "smooth" });
+        }
+    };
+
+    const scrollRight2 = (event: React.MouseEvent) => {
+        event.preventDefault();
+        event.stopPropagation();
+        if (productListRef2.current) {
+            productListRef2.current.scrollBy({ left: 100, behavior: "smooth" });
+        }
+    };
+
     return (
         <div className="sc-b118de6a-0 cfnons">
+            {/* Add style tag with scrollbar styles */}
+            <style>{scrollbarStyles}</style>
+
             <div>
                 <a href="https://tiki.vn/sach-truyen-tieng-viet/c316?itm_campaign=CTP_YPD_TKA_BSA_UNK_ALL_UNK_UNK_UNK_UNK_X.273103_Y.1855423_Z.3857321_CN.%255BStore-Ads%255D-1980s&amp;itm_medium=CPC&amp;itm_source=tiki-ads&amp;publisher_vn=33244&amp;seller=1&amp;sort=newest"
                     target="_blank" className="sc-aeef9a0f-0 sc-6be5dba8-0 kCvpXv giHiyf">
@@ -12,6 +75,7 @@ const TikiAdsComponent = () => {
                             src="https://salt.tikicdn.com/ts/tka/1c/a1/00/32b0e70d3c6db98a03f300e89480bc72.png"
                             alt="1980 Books Tại Tiki Trading" className="sc-6be5dba8-2 euPenc" />
                     </div>
+
                     <div className="sc-6be5dba8-3 lgpwhb">
                         <div style={{ fontSize: "20px", lineHeight: "30px", marginBottom: "4px" }}
                             className="sc-aeef9a0f-2 kyfJKn">Bộ Sưu Tập Sách Mới Giảm Đến 30%</div>
@@ -28,8 +92,17 @@ const TikiAdsComponent = () => {
                             </div>
                         </div>
                         <div style={{ marginTop: "auto" }}>
-                            <div style={{ display: "flex", justifyContent: "space-between" }}>
-                                <div style={{ width: "208px" }} className="sc-aeef9a0f-7 fRchjC">
+                            <div style={{ display: "flex", alignItems: "center" }}>
+                                <div
+                                    ref={productListRef1}
+                                    style={{
+                                        display: "flex",
+                                        overflow: "auto",
+                                        scrollBehavior: "smooth",
+                                        width: "208px"
+                                    }}
+                                    className="sc-aeef9a0f-7 fRchjC custom-scrollbar"
+                                >
                                     <div className="sc-49d535ac-0 bLwwYd" style={{ width: "64px", height: "64px" }}>
                                         <picture className="webpimg-container">
                                             <source type="image/webp"
@@ -109,8 +182,17 @@ const TikiAdsComponent = () => {
                             </div>
                         </div>
                         <div style={{ marginTop: "auto" }}>
-                            <div style={{ display: "flex", justifyContent: "space-between" }}>
-                                <div style={{ width: "208px" }} className="sc-aeef9a0f-7 fRchjC">
+                            <div style={{ display: "flex", alignItems: "center" }}>
+                                <div
+                                    ref={productListRef2}
+                                    style={{
+                                        display: "flex",
+                                        overflow: "auto",
+                                        scrollBehavior: "smooth",
+                                        width: "208px"
+                                    }}
+                                    className="sc-aeef9a0f-7 fRchjC custom-scrollbar"
+                                >
                                     <div className="sc-49d535ac-0 bLwwYd" style={{ width: "64px", height: "64px" }}>
                                         <picture className="webpimg-container">
                                             <source type="image/webp"

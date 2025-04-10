@@ -1,0 +1,71 @@
+.hVLBTd {
+    width: 100%;
+    position: relative;
+}
+
+.hVLBTd .icon {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    z-index: 2;
+    background-color: #fff;
+    padding: 6px;
+    transition: opacity 0.3s ease;
+}
+
+.hVLBTd .icon.disabled {
+    opacity: 0.4 !important;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.hVLBTd .icon:not(.disabled):hover {
+    background-color: #f2f6ff;
+}
+
+.hVLBTd .icon:not(.disabled):active {
+    background-color: #e6eeff;
+}
+
+.hVLBTd .icon-prev {
+    left: 8px;
+}
+
+.hVLBTd .icon-next {
+    right: 8px;
+}
+
+.hVLBTd .content {
+    overflow: hidden;
+}
+
+.hVLBTd .content .slider {
+    display: inline-flex;
+    transition: all 0.5s ease-in-out;
+    min-width: 100%;
+}
+
+.dutDwQ>* {
+    width: 100%;
+}
+
+.gFvZAq {
+    display: flex;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+a {
+    color: rgb(11, 116, 229);
+    text-decoration: none;
+}
+
+a {
+    background-color: transparent;
+}

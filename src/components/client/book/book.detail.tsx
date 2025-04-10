@@ -65,8 +65,8 @@ const BookDetail = (props: IProps) => {
             if (currentBook.thumbnail) {
                 images.push(
                     {
-                        original: `${import.meta.env.VITE_BACKEND_URL}/images/book/${currentBook.thumbnail}`,
-                        thumbnail: `${import.meta.env.VITE_BACKEND_URL}/images/book/${currentBook.thumbnail}`,
+                        original: `${currentBook.thumbnail}`,
+                        thumbnail: `${currentBook.thumbnail}`,
                         originalClass: "original-image",
                         thumbnailClass: "thumbnail-image"
                     },
@@ -161,8 +161,8 @@ const BookDetail = (props: IProps) => {
     }
 
     return (
-        <div style={{ background: '#efefef', }}>
-            <div className='view-detail-book' style={{ maxWidth: 1440, padding: '20px 0', margin: '0 auto', minHeight: "calc(100vh - 150px)" }}>
+        <div>
+            <div className='view-detail-book' style={{ maxWidth: 1440, padding: '10px 15px 40px 35px', margin: '0 auto', minHeight: "calc(100vh - 150px)" }}>
                 <Breadcrumb
                     separator=">"
                     items={[
@@ -170,13 +170,18 @@ const BookDetail = (props: IProps) => {
                             title: <Link to={"/"}>Trang Chủ</Link>,
                         },
                         {
-                            title: 'Xem chi tiết sách',
+                            title: <Link to={"/"}>Nhà Sách Tiki</Link>,
+
                         },
+                        {
+                            title: <Link to={"/"}>{currentBook?.mainText}</Link>,
+                        },
+
                     ]}
                 />
                 <div style={{ borderRadius: 5, position: 'relative' }}>
                     <Row gutter={[20, 20]}>
-                        <Col md={17} sm={24}>
+                        <Col md={18} sm={24}>
 
                             <Row gutter={[30, 0]}> {/* Thêm Row để chứa 2 cột con */}
                                 <Col md={11} sm={24}
@@ -213,7 +218,6 @@ const BookDetail = (props: IProps) => {
                                     <Row gutter={[20, 20]}>
                                         <Col md={16} sm={0} xs={0}>
 
-
                                             <CustomerReview />
                                         </Col>
 
@@ -224,7 +228,7 @@ const BookDetail = (props: IProps) => {
                             </Row>
 
                         </Col>
-                        <Col md={7} sm={24}>
+                        <Col md={6} sm={24}>
                             <Col md={0} sm={24} xs={24}>
                                 <ImageGallery
                                     ref={refGallery}

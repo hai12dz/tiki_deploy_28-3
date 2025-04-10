@@ -285,30 +285,35 @@ $font-family: 'Inter', Helvetica, Arial, sans-serif;
         margin-left: 0;
         position: relative;
 
-        // Update vertical divider to move with container
-        .brand-supplier-divider {
-            width: 1.5px;
-            height: 33px;
-            background-color: $border-light;
-            margin-top: 21px;
-            align-self: flex-start;
-            position: absolute; // Change to absolute positioning
-            left: 380px; // Position it between brand and supplier sections
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            opacity: 0.7;
+        // Add a container for proper positioning
+        .brand-supplier-divider-container {
+            position: absolute;
+            top: 0;
+            left: 385px; // Adjust this value to position the divider precisely
+            height: 100%;
             z-index: 1;
+            width: 0; // Take no width in the flex layout
+
+            // Ensure the divider stays visible in both regular and translated modes
+            .brand-supplier-divider {
+                width: 1.5px;
+                height: 33px;
+                background-color: $border-light;
+                margin-top: 18px;
+                opacity: 0.7;
+            }
         }
     }
 
-    // Ensure divider visibility
+    // Make sure divider is visible in translated mode
     .filter-sections.translated {
-        .vertical-divider {
-            display: block;
-            visibility: visible;
-            opacity: 0.7;
+        .brand-supplier-divider-container {
+            .brand-supplier-divider {
+                opacity: 0.7;
+                display: block;
+                visibility: visible;
+            }
         }
-
-
     }
 
     // Supplier options container
@@ -338,6 +343,24 @@ $font-family: 'Inter', Helvetica, Arial, sans-serif;
         .filter-options-wrapper {
             @include flex(row, null, center);
             position: relative;
+
+            // Add styles for the expand button container
+            .expand-button-container {
+                position: relative; // This is crucial for the divider positioning
+                display: flex;
+                align-items: center;
+
+                // Position the divider as an absolute child of the expand button container
+                .brand-supplier-divider {
+                    position: absolute;
+                    width: 1.5px;
+                    height: 33px;
+                    background-color: $border-light;
+                    opacity: 0.7;
+                    left: 52px; // Position to the right of the button
+                    top: 0;
+                }
+            }
         }
 
         .expand-button {
@@ -349,7 +372,6 @@ $font-family: 'Inter', Helvetica, Arial, sans-serif;
             height: 32px;
         }
 
-        // Common options styling
         .filter-options {
             font-family: $font-family;
             font-size: 14px;

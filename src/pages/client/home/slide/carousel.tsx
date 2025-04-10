@@ -16,7 +16,7 @@ const PrevArrow = (props: any) => {
                 width: "32px",
                 height: "56px",
                 left: "1px",
-                top: "50%",
+                top: "53%",
                 transform: "translateY(-50%) rotate(180deg)",
                 position: "absolute",
                 cursor: "pointer",
@@ -39,7 +39,7 @@ const NextArrow = (props: any) => {
                 width: "32px",
                 height: "56px",
                 right: "1px",
-                top: "50%",
+                top: "53%",
                 transform: "translateY(-50%)",
                 position: "absolute",
                 cursor: "pointer",
@@ -53,6 +53,8 @@ const MyCarousel = () => {
     return (
         <div className="carousel-container">
             <Carousel arrows infinite prevArrow={<PrevArrow />} nextArrow={<NextArrow />}>
+                <CarouselComponent />
+                <CarouselComponent />
                 <CarouselComponent />
                 <CarouselComponent />
                 <CarouselComponent />

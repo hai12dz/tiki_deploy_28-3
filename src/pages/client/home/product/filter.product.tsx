@@ -225,23 +225,50 @@ const ProductFilter: React.FC<ProductFilterProps> = ({
     const getBrandNames = () => listBrand.map(brand => brand.name);
     const getSupplierNames = () => listSupplier.map(supplier => supplier.name);
 
-    const brands = getBrandNames().slice(0, 4);
-    const brandsFull = getBrandNames().slice(0, 4);
+    // Always ensure we display exactly 4 brands
+    const getDisplayBrands = () => {
+        const allBrandNames = getBrandNames();
+        if (selectedBrands.length >= 4) {
+            return selectedBrands.slice(0, 4);
+        } else {
+            // Add default brands to fill up to 4 items
+            const result = [...selectedBrands];
+            const defaultBrands = allBrandNames.filter(brand => !selectedBrands.includes(brand));
+            const remaining = 4 - result.length;
+            result.push(...defaultBrands.slice(0, remaining));
+            return result;
+        }
+    };
+
+    // Always ensure we display exactly 4 suppliers
+    const getDisplaySuppliers = () => {
+        const allSupplierNames = getSupplierNames();
+        if (selectedSuppliers.length >= 4) {
+            return selectedSuppliers.slice(0, 4);
+        } else {
+            // Add default suppliers to fill up to 4 items
+            const result = [...selectedSuppliers];
+            const defaultSuppliers = allSupplierNames.filter(supplier => !selectedSuppliers.includes(supplier));
+            const remaining = 4 - result.length;
+            result.push(...defaultSuppliers.slice(0, remaining));
+            return result;
+        }
+    };
+
+    const brands = getDisplayBrands().slice(0, 4);
+    const brandsFull = getDisplayBrands().slice(0, 4);
 
     const supplierNames = getSupplierNames();
-    const suppliers = supplierNames.slice(0, 3).map(name => {
-        if (name === "HỆ THỐNG NHÀ SÁCH ABC") {
-            return "HỆ THỐNG NHÀ SÁCH AB...";
-        }
-        return name.length > 25 ? name.substring(0, 25) + '...' : name;
-    });
 
-    const suppliersFull = supplierNames.slice(0, 4).map(name => {
+    const formatSupplierName = (name: string) => {
         if (name === "HỆ THỐNG NHÀ SÁCH ABC") {
             return "HỆ THỐNG NHÀ SÁCH AB...";
         }
         return name.length > 25 ? name.substring(0, 25) + '...' : name;
-    });
+    };
+
+    const suppliers = getDisplaySuppliers().slice(0, 3).map(formatSupplierName);
+    const suppliersFull = getDisplaySuppliers().slice(0, 4).map(formatSupplierName);
 
     const allBrands = getBrandNames();
     const allSuppliers = getSupplierNames();
@@ -631,20 +658,21 @@ const ProductFilter: React.FC<ProductFilterProps> = ({
                                                 ))}
                                             </div>
                                         </div>
-                                        <button ref={expandButtonRef} className="expand-button" onClick={handleBrandToggle}>
-                                            <div>
-                                                <img
-                                                    src="https://frontend.tikicdn.com/_desktop-next/static/img/catalog/arrow.svg"
-                                                    alt="arrow"
-                                                    className="arrow-icon-brand"
-                                                />
-                                            </div>
-                                        </button>
+                                        <div className="expand-button-container">
+                                            <button ref={expandButtonRef} className="expand-button" onClick={handleBrandToggle}>
+                                                <div>
+                                                    <img
+                                                        src="https://frontend.tikicdn.com/_desktop-next/static/img/catalog/arrow.svg"
+                                                        alt="arrow"
+                                                        className="arrow-icon-brand"
+                                                    />
+                                                </div>
+                                            </button>
+                                            <div className="brand-supplier-divider"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div className="brand-supplier-divider"></div>
 
                             <div className="filter-sections-supplier">
                                 <div className="filter-section">

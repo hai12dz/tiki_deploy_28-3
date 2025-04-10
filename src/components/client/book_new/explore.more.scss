@@ -1,0 +1,332 @@
+.kzWQME {
+    background: rgb(245, 245, 250);
+    border-radius: 8px;
+}
+
+.kzWQME>.header {
+    display: flex;
+    background: rgb(245, 245, 250);
+    flex-direction: column;
+}
+
+.hMkAQW {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    background: rgb(245, 245, 250);
+    padding: 0px 0px 16px;
+    border-radius: 0px 0px 4px 4px;
+}
+
+.EwjD {
+    color: rgb(39, 39, 42);
+    display: flex;
+    padding: 12px 16px;
+    background-color: white;
+    flex: 1 1 0%;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+    text-transform: unset;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    border-radius: 8px 8px 0px 0px;
+}
+
+.fTTOgs {
+    display: grid;
+    overflow: auto;
+    position: relative;
+    height: 79px;
+    background: white;
+    grid-template-columns: repeat(8, 1fr);
+    margin-bottom: 4px;
+}
+
+.fTTOgs .tab.active {
+    background: rgba(0, 96, 255, 0.05);
+    padding: 8px 4px;
+    border-bottom-color: rgb(10, 104, 255);
+}
+
+.fTTOgs .tab {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-shrink: 0;
+    cursor: pointer;
+    min-height: 78px;
+    padding: 8px 4px;
+    border-bottom: 1px solid rgb(235, 235, 240);
+}
+
+.fTTOgs .tab.active>.tab-text {
+    color: rgb(10, 104, 255);
+}
+
+.fTTOgs .tab>.tab-text {
+    color: rgb(128, 128, 137);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+    padding-top: 4px;
+    text-align: center;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    word-break: break-word;
+}
+
+.fTTOgs .tab img {
+    transition: 0.4s;
+    border-radius: 4px;
+}
+
+.ldcZGa {
+    object-fit: contain;
+    display: block;
+}
+
+@media only screen and (min-width: 1441px) {
+    .hMkAQW>.content {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+.hMkAQW>.content {
+    display: grid;
+    align-self: stretch;
+    gap: 8px;
+    background-color: rgb(245, 245, 250);
+    border-top: 1px solid rgb(242, 242, 242);
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.eogKxs {
+    cursor: pointer;
+    display: inline-block;
+    width: 240px;
+    margin-top: 12px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid rgb(10, 104, 255);
+    color: rgb(10, 104, 255);
+    font-size: 16px;
+    line-height: 150%;
+    text-align: center;
+}
+
+.hMkAQW>.content>.tiki-square-ad {
+    grid-column: span 2;
+    height: 100%;
+}
+
+.hMkAQW>.content>.tiki-square-ad>div {
+    height: 100%;
+    width: 100%;
+}
+
+.dgeJJr {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.kKRFTg {
+    position: absolute;
+    z-index: 1;
+    left: 16px;
+    bottom: 16px;
+    background: rgb(255, 255, 255);
+    color: rgb(10, 104, 255);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+    border-radius: 20px;
+    padding: 3px 12px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.dgeJJr .banner-image {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    object-fit: cover;
+}
+
+.hFEtiz {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.kKRFTg img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    margin-left: 8px;
+}
+
+.hMkAQW>.content .product-item {
+    text-decoration: none;
+    display: flex;
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background: rgb(255, 255, 255);
+    overflow: hidden;
+}
+
+.iRifC {
+    text-decoration: none;
+    display: flex;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    height: 100%;
+}
+
+.iRifC>* {
+    width: 100%;
+}
+
+.esCPZO {
+    display: flex;
+    color: rgb(36, 36, 36);
+    text-decoration: none;
+    flex-direction: column;
+    border: 1px solid rgb(235, 235, 240);
+    border-radius: 8px;
+    background: rgb(255, 255, 255);
+    overflow: hidden;
+    position: relative;
+}
+
+.oeQAA {
+    flex-shrink: 0;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+}
+
+.hiPBCe {
+    height: 20px;
+    padding: 2px 4px;
+    gap: 0px;
+    border-radius: 6px;
+    font-size: 10px;
+    line-height: 150%;
+}
+
+.oeQAA .image-wrapper {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.hFEtiz {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.esCPZO .info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1 1 0%;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+.jVbBhv .price-discount__discount {
+    display: flex;
+    padding: 0px 4px;
+    align-items: flex-start;
+    border-radius: 8px;
+    background: var(--Alias-Theme-Variant, #f5f5fa);
+    color: var(--Alias-Primary---On-Theme, #27272a);
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+}
+
+.jVbBhv .price-discount__original-price {
+    color: var(--Alias-Secondary---On-Theme, #808089);
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    text-decoration-line: line-through;
+}
+
+.bhuTly {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    color: var(--Alias-Primary---On-Theme, #27272a);
+    text-overflow: ellipsis;
+    height: 15px;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+.gheWdB {
+    display: flex;
+    gap: 4px;
+    border-top: 1px solid rgb(235, 235, 240);
+    padding-top: 6px;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.gheWdB span {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    flex: 1 0 0px;
+    overflow: hidden;
+    color: var(--Alias-Secondary---On-Theme, #808089);
+    text-overflow: ellipsis;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+}

@@ -56,7 +56,7 @@ const BookInDetail = (props: IProps) => {
                     >
                         <div className="wrapper-book">
                             <div className="thumbnail">
-                                <img src={`${import.meta.env.VITE_BACKEND_URL}/images/book/${item.thumbnail}`} alt={item.mainText} />
+                                <img src={`${item.thumbnail}`} alt={item.mainText} />
                             </div>
                             <div className="text single-line">
                                 {item.mainText}

@@ -204,7 +204,7 @@ const AppHeader = (props: IProps) => {
                                                 alt="header-icon-location"
                                             />
                                             <h4 className="title">Giao đến:</h4>
-                                            <div className="address">Bạn muốn giao hàng tới đâu?</div>
+                                            <div className="address">Q. Hoàn Kiếm, P. Hàng Trống, Hà Nội</div>
                                         </div>
                                     </div>
                                 </div>

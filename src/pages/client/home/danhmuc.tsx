@@ -14,7 +14,7 @@ const BookShopComponent = () => {
                 <div className="content">
                     <div className="sc-f5219d7f-1 jBwezC">
                         <div className="sc-f5219d7f-0 haxTPb" style={{
-                            maxHeight: isExpanded ? 'none' : '300px',
+                            maxHeight: isExpanded ? 'none' : '245px',
                             overflow: isExpanded ? 'visible' : 'hidden',
                             position: 'relative'
                         }}>

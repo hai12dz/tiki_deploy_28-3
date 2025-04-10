@@ -1,0 +1,96 @@
+.gTEsFO {
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 400;
+    color: rgb(39, 39, 42);
+    background-color: rgb(255, 255, 255);
+    border: 0.5px solid rgb(235, 235, 240);
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px 0px;
+    min-width: 319px;
+}
+
+.IAxRY {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 12px;
+}
+
+.gTEsFO .title {
+    font-weight: 600;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    gap: 4px;
+}
+
+.eEVyHi {
+    font-family: Inter, Helvetica, Arial, sans-serif;
+    text-size-adjust: 100%;
+    pointer-events: auto;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 400;
+    color: rgb(39, 39, 42);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.eEVyHi ul {
+    margin-block: 0px;
+    padding-inline: 20px 12px;
+}
+
+.cgFBJP {
+    margin: 12px 0px;
+    padding: 8px 12px;
+    height: 40px;
+    background: rgb(10, 104, 255);
+    color: white;
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.eEVyHi .title {
+    margin: 4px 0px;
+}
+
+.eEVyHi .text {
+    gap: 3px;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 400;
+    color: rgb(39, 39, 42);
+}
+
+.gTEsFO .title {
+    font-weight: 600;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    gap: 4px;
+}
+
+.title {
+    font-family: Inter, Helvetica, Arial, sans-serif;
+    text-size-adjust: 100%;
+    pointer-events: auto;
+    font-size: 14px;
+    line-height: 21px;
+    color: rgb(39, 39, 42);
+    box-sizing: border-box;
+    font-weight: 600;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    gap: 4px;
+    margin: 4px 0px;
+}

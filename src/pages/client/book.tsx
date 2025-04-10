@@ -1,5 +1,6 @@
 import BookDetail from "@/components/client/book/book.detail";
 import BookLoader from "@/components/client/book/book.loader";
+import BookNew from "@/components/client/book_new/book.product.new";
 import { getBookByIdAPI } from "@/services/api";
 import { App } from "antd";
 import { useEffect, useState } from "react";
@@ -34,7 +35,10 @@ const BookPage = () => {
             {isLoadingBook ?
                 <BookLoader />
                 :
-                <BookDetail
+                // <BookDetail
+                //     currentBook={currentBook}
+                // />
+                <BookNew
                     currentBook={currentBook}
                 />
             }

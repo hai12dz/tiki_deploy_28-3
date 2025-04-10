@@ -1,10 +1,9 @@
 .product-container {
-    border: 1px solid #f0f0f0;
     margin-top: 10px;
     width: 81.5%;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: visible;
 
     .customize-row {
         display: flex;
@@ -28,8 +27,7 @@
         flex-direction: column;
 
         &:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
         }
 
         .wrapper {

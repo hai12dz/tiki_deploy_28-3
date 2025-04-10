@@ -1,18 +1,59 @@
+.carousel-container {
+    margin-bottom: 17px;
+
+}
+
+
+
 .ant-carousel {
     .slick-dots {
-        bottom: -10px !important; // Dịch xuống dưới
+        bottom: -17px !important;
 
         li {
-            width: 20px; // Kích thước mặc định
-            height: 3px;
-            background: #d9d9d9; // Màu xám nhạt cho dots chưa chọn
+            width: 16px;
+            height: 2px;
+            background: #d9d9d9;
             border-radius: 2px;
-            transition: all 0.3s ease-in-out; // Hiệu ứng mượt
+            transition: all 0.3s ease-in-out;
+            margin: 0 2px !important;
+
+            /* Vô hiệu hóa hiệu ứng hover */
+            &:hover {
+                background: #d9d9d9 !important;
+                /* Giữ nguyên màu nền khi hover */
+                width: 16px !important;
+                /* Giữ nguyên kích thước khi hover */
+                transform: none !important;
+                /* Ngăn chặn mọi biến đổi */
+                opacity: 1 !important;
+                /* Giữ nguyên độ mờ */
+                cursor: pointer;
+                /* Vẫn giữ con trỏ để đảm bảo người dùng biết có thể click */
+            }
+
+            /* Xử lý cho button bên trong khi hover */
+            &:hover button {
+                background: transparent !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            &:last-child {
+                margin-right: 0 !important;
+            }
 
             &.slick-active {
+                width: 25px !important;
+                background: #366aee !important;
+
+                /* Đảm bảo dot active vẫn giữ nguyên trạng thái khi hover */
+                &:hover {
+                    width: 25px !important;
+                    background: #366aee !important;
+                }
+
                 button {
-                    width: 29px;
-                    background: #1890ff !important;
+                    background: transparent !important;
                 }
             }
         }
@@ -34,8 +75,9 @@
     top: 34px;
     left: 10px;
 
+
     // Làm đầu mũi tên bớt sắc
-    border-left: 3px solid #f1f1f1;
+    border-left: 0px solid #f1f1f1;
 
     &:hover {
         border-right-color: darkgray; // Đổi màu khi hover

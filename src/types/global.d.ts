@@ -44,6 +44,8 @@ declare global {
         role: string;
         avatar: string;
         id: string;
+        totalEvaluation: number;
+        totalThanks: number;
     }
 
     interface IFetchAccount {
@@ -60,12 +62,25 @@ declare global {
         isActive: boolean;
         createdAt: Date;
         updatedAt: Date;
+
+
     }
 
     interface IResponseImport {
         countSuccess: number;
         countError: number;
         detail: any;
+    }
+
+    interface IReviews {
+        id: string;
+        rating: number;
+        comment: string;
+        img: string;
+        isBuy: boolean;
+        commentReply: string;
+        createdAt: string;
+        user: IUser
     }
 
     interface IBookTable {
@@ -82,6 +97,8 @@ declare global {
         createdAt: Date;
         updatedAt: Date;
         supplier: ISupplierDto
+        rating_svg: number
+        reviews: IReviews[]
     }
     interface ISupplierDto {
         id: number;
