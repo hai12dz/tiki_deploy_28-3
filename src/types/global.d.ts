@@ -44,8 +44,7 @@ declare global {
         role: string;
         avatar: string;
         id: string;
-        totalEvaluation: number;
-        totalThanks: number;
+
     }
 
     interface IFetchAccount {
