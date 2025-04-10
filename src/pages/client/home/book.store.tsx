@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { getFullCategories, getBooksAPI } from "@/services/api";
 import MyCarousel from "./slide/carousel";
 import ProductFilter from "./product/filter.product";
-import FilterProductNew from "./product/product.test";
 
 // Add a proper interface for the component props
 interface TikiBookstoreProps {

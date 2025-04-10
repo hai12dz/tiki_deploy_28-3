@@ -397,7 +397,7 @@ const FilterNewProductModal: React.FC<FilterNewProductModalProps> = ({
                             <div className="sc-6a0d1b22-1 kvcRVh">
                                 <div data-view-index="0" data-view-id="search_filter_item" data-view-label="Giao siêu tốc 2H">
                                     <div className="sc-aaa42ade-0 hxysjC" onClick={() => onChangeCheckBox('service', 'Giao siêu tốc 2H')}>
-                                        <div className="sc-eca64225-3 Ywrhm" style={{ marginRight: "8px" }}>
+                                        <div className="sc-eca64225-3 Ywrhm">
                                             <span className="box">
                                                 <img
                                                     className={`icon-check-on ${selectedServices.includes('Giao siêu tốc 2H') || localFastDeliveryChecked ? 'visible' : ''}`}
@@ -419,8 +419,7 @@ const FilterNewProductModal: React.FC<FilterNewProductModalProps> = ({
                                         <img
                                             src="https://salt.tikicdn.com/ts/tka/a8/31/b6/802e2c99dcce64c67aa2648edb15dd25.png"
                                             alt="Giao siêu tốc 2H"
-                                            className="sc-aaa42ade-1 vQcnP"
-                                            style={{ height: "16px" }}
+                                            className="sc-aaa42ade-1 vQcnP height-16"
                                         />
                                         <div className="sc-aaa42ade-2 hCmoWw">
                                             <span>Giao siêu tốc 2H</span>
@@ -436,7 +435,7 @@ const FilterNewProductModal: React.FC<FilterNewProductModalProps> = ({
                             <div className="sc-6a0d1b22-1 kvcRVh">
                                 <div data-view-index="0" data-view-id="search_filter_item" data-view-label="Siêu rẻ">
                                     <div className="sc-aaa42ade-0 hxysjC" onClick={() => onChangeCheckBox('promotion', 'Siêu rẻ')}>
-                                        <div className="sc-eca64225-3 Ywrhm" style={{ marginRight: "8px" }}>
+                                        <div className="sc-eca64225-3 Ywrhm">
                                             <span className="box">
                                                 <img
                                                     className={`icon-check-on ${selectedPromotions.includes('Siêu rẻ') || localCheapPriceChecked ? 'visible' : ''}`}
@@ -458,8 +457,7 @@ const FilterNewProductModal: React.FC<FilterNewProductModalProps> = ({
                                         <img
                                             src="https://salt.tikicdn.com/ts/upload/b5/aa/48/2305c5e08e536cfb840043df12818146.png"
                                             alt="Siêu rẻ"
-                                            className="sc-aaa42ade-1 vQcnP"
-                                            style={{ height: "16px" }}
+                                            className="sc-aaa42ade-1 vQcnP height-16"
                                         />
                                         <div className="sc-aaa42ade-2 hCmoWw">
                                             <span>Siêu rẻ</span>
@@ -468,7 +466,7 @@ const FilterNewProductModal: React.FC<FilterNewProductModalProps> = ({
                                 </div>
                                 <div data-view-index="0" data-view-id="search_filter_item" data-view-label="">
                                     <div className="sc-aaa42ade-0 hxysjC" onClick={() => onChangeCheckBox('promotion', 'FREESHIP XTRA')}>
-                                        <div className="sc-eca64225-3 Ywrhm" style={{ marginRight: "8px" }}>
+                                        <div className="sc-eca64225-3 Ywrhm">
                                             <span className="box">
                                                 <img
                                                     className={`icon-check-on ${selectedPromotions.includes('FREESHIP XTRA') || localFreeShipChecked ? 'visible' : ''}`}
@@ -490,8 +488,7 @@ const FilterNewProductModal: React.FC<FilterNewProductModalProps> = ({
                                         <img
                                             src="https://salt.tikicdn.com/ts/upload/2f/20/77/0f96cfafdf7855d5e7fe076dd4f34ce0.png"
                                             alt=""
-                                            className="sc-aaa42ade-1 vQcnP"
-                                            style={{ height: "16px" }}
+                                            className="sc-aaa42ade-1 vQcnP height-16"
                                         />
                                     </div>
                                 </div>
@@ -664,7 +661,6 @@ const FilterNewProductModal: React.FC<FilterNewProductModalProps> = ({
                             </div>
                         </div>
                         <Divider />
-
                         <h3>Giá</h3>
                         <div className="price-wrapper">
                             <div className="price-buttons-container">
@@ -768,9 +764,9 @@ const FilterNewProductModal: React.FC<FilterNewProductModalProps> = ({
                                 {showFullBrandList ? 'Thu gọn' : 'Xem thêm'}
                             </p>
                         )}
-                        <Divider style={{ marginBottom: '12px' }} />
+                        <Divider className="divider-margin-bottom-12" />
                         <h3>Nhà cung cấp</h3>
-                        <Row gutter={[16, 8]} style={{ marginBottom: 0 }}>
+                        <Row gutter={[16, 8]} className="row-no-margin">
                             {listSupplier.slice(0, showFullSupplierList ? undefined : 5).map((item, index) => (
                                 <Col key={index} span={12}>
                                     <div className="custom-checkbox" onClick={() => onChangeCheckBox('supplier', item.name)}>
@@ -799,8 +795,7 @@ const FilterNewProductModal: React.FC<FilterNewProductModalProps> = ({
                         {listSupplier.length > 5 && (
                             <p
                                 onClick={() => setShowFullSupplierList(!showFullSupplierList)}
-                                className="show-more-less"
-                                style={{ marginBottom: 0 }}
+                                className="show-more-less no-margin"
                             >
                                 {showFullSupplierList ? 'Thu gọn' : 'Xem thêm'}
                             </p>

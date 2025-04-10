@@ -386,3 +386,107 @@ sup {
     line-height: normal;
     font-size: 12px;
 }
+
+// New unique classes for product seen component
+.ps-container {
+    position: relative;
+}
+
+.ps-slider-container {
+    position: relative;
+}
+
+.ps-slider-init {
+    position: relative;
+    min-height: 300px;
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.ps-nav-button {
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.ps-nav-left {
+    left: 0;
+}
+
+.ps-nav-right {
+    right: 0;
+}
+
+.ps-text-gray {
+    color: gray;
+}
+
+.ps-text-black {
+    color: black;
+}
+
+// Update track to use align-items: stretch to make all items have the same height
+.ps-track {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch; // This makes all items have the height of the tallest item
+    transition: transform 300ms ease;
+    margin: 0;
+    padding: 0;
+}
+
+// Make sure slide items can stretch to fill the height
+.ps-slide-item {
+    outline: none;
+    width: 234px;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    display: flex; // Allow children to stretch
+    height: 100%; // Take full height
+}
+
+// Make all nested containers take full height
+.ps-slide-item>div {
+    width: 100%;
+    height: 100%; // Take full height of parent
+    display: flex; // Allow children to stretch
+}
+
+// Make sure the product container takes full height
+.ps-product-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ps-rating-text {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: rgb(128, 128, 137);
+}
+
+.ps-star-icon {
+    color: rgb(253, 216, 54);
+    margin-left: 2px;
+}
+
+.ps-divider {
+    width: 1px;
+    height: 12px;
+    background-color: rgb(199, 199, 199);
+    margin: 0 6px;
+}
+
+.ps-empty-state {
+    font-size: 14px;
+    color: rgb(51, 51, 51);
+    text-align: center;
+    margin: 0 auto;
+    padding: 140px 0px 0px 0px;
+}

@@ -659,7 +659,6 @@ $font-family: 'Inter', Helvetica, Arial, sans-serif;
 .brand-modal-portal,
 .supplier-modal-portal {
     position: absolute;
-    z-index: 9999;
     @include modal-base;
     @include flex(column, null, flex-start);
     max-width: 90vw;
@@ -707,6 +706,22 @@ $font-family: 'Inter', Helvetica, Arial, sans-serif;
     }
 }
 
+.brand-modal-portal {
+    position: absolute;
+    --top-position: 0;
+    --left-position: 0;
+    top: var(--top-position);
+    left: var(--left-position);
+}
+
+.supplier-modal-portal {
+    position: absolute;
+    --top-position: 0;
+    --left-position: 0;
+    top: var(--top-position);
+    left: var(--left-position);
+}
+
 // Sort menu styles
 .sort-menu-portal {
     position: absolute;
@@ -749,6 +764,11 @@ $font-family: 'Inter', Helvetica, Arial, sans-serif;
             margin-left: auto;
         }
     }
+
+    --top-position: 0;
+    --right-position: 70px;
+    top: var(--top-position);
+    right: var(--right-position);
 }
 
 // Responsive styles
@@ -802,4 +822,23 @@ $font-family: 'Inter', Helvetica, Arial, sans-serif;
         background-position: center;
         margin-top: 3px;
     }
+}
+
+/* Star rating styles */
+.star-rating-no-gap {
+    gap: 0px;
+}
+
+.star-icon-negative-margin {
+    margin-right: -1px;
+}
+
+/* Filter options and other styles */
+.filter-options {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.translated {
+    transition: transform 0.3s ease;
 }

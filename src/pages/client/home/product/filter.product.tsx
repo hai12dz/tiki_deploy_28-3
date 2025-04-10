@@ -406,9 +406,9 @@ const ProductFilter: React.FC<ProductFilterProps> = ({
                 ref={modalRef}
                 className="brand-selection-modal brand-modal-portal"
                 style={{
-                    top: `${buttonRect.bottom + window.scrollY + 10}px`,
-                    left: `${buttonRect.left + window.scrollX - 200}px`,
-                }}
+                    '--top-position': `${buttonRect.bottom + window.scrollY + 10}px`,
+                    '--left-position': `${buttonRect.left + window.scrollX - 200}px`
+                } as React.CSSProperties}
             >
                 <div className="brand-selection-content">
                     <div className="brand-selection-options">
@@ -457,9 +457,9 @@ const ProductFilter: React.FC<ProductFilterProps> = ({
                 ref={modalRef}
                 className="supplier-selection-modal supplier-modal-portal"
                 style={{
-                    top: `${buttonRect.bottom + window.scrollY + 10}px`,
-                    left: `${buttonRect.left + window.scrollX + 470}px`,
-                }}
+                    '--top-position': `${buttonRect.bottom + window.scrollY + 10}px`,
+                    '--left-position': `${buttonRect.left + window.scrollX + 470}px`
+                } as React.CSSProperties}
             >
                 <div className="supplier-selection-content supplier-content-scroll">
                     <div className="supplier-selection-options">
@@ -562,9 +562,8 @@ const ProductFilter: React.FC<ProductFilterProps> = ({
                 ref={sortMenuRef}
                 className="sort-menu visible sort-menu-portal"
                 style={{
-                    top: `${buttonRect.bottom + window.scrollY}px`,
-                    right: '70px',
-                }}
+                    '--top-position': `${buttonRect.bottom + window.scrollY}px`
+                } as React.CSSProperties}
             >
                 {sortOptions.map((option, index) => (
                     <div
@@ -854,8 +853,11 @@ const ProductFilter: React.FC<ProductFilterProps> = ({
                                 alt="hovered-checkbox"
                             />
                         </span>
-                        <div className="option-content" onClick={handleFourStarsChange}>
-                            <div className="star-rating" style={{ gap: '0px' }}>
+                        <div
+                            className="option-content"
+                            onClick={handleFourStarsChange}
+                        >
+                            <div className="star-rating star-rating-no-gap">
                                 {[...Array(5)].map((_, index) => (
                                     <svg
                                         key={index}
@@ -863,7 +865,7 @@ const ProductFilter: React.FC<ProductFilterProps> = ({
                                         height="12"
                                         fill="none"
                                         xmlns="http://www.w3.org/2000/svg"
-                                        style={{ marginRight: '-1px' }}
+                                        className="star-icon-negative-margin"
                                     >
                                         <g clipPath="url(#a)">
                                             <path

@@ -76,38 +76,21 @@ const RecentlyViewedProducts = () => {
     return (
         <div
             data-view-id="product_list_recently_view_container"
-            className="sc-9c7f2812-0 fMrUyv"
-            style={{ position: "relative" }}
+            className="sc-9c7f2812-0 fMrUyv ps-container"
         >
             <h2 className="sc-9ee36b14-0 hPpiPH">Sản phẩm đã xem</h2>
             <div
-                className="slider-container"
-                style={{ position: "relative" }}
-                onMouseEnter={handleMouseEnter} // Add hover event
-                onMouseLeave={handleMouseLeave} // Add hover event
+                className="slider-container ps-slider-container"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
             >
                 <div className="sc-6bdcb3d5-0 iWkFxH">
-                    <div className="slick-slider slick-initialized" dir="ltr" style={{
-                        position: 'relative',
-                        minHeight: '300px',
-                        width: '100%',
-                        padding: '0',
-                        boxSizing: 'border-box'
-                    }}>
+                    <div className="slick-slider slick-initialized ps-slider-init" dir="ltr">
                         {listBookViewed.length > 0 ? (
                             <>
                                 <a
                                     data-role="none"
-                                    className={`slick-arrow slick-prev ${isPrevDisabled ? 'slick-disabled' : ''} ${isHovered && !isPrevDisabled ? 'hover-enabled' : ''}`}
-                                    style={{
-                                        display: "block",
-                                        position: "absolute",
-                                        left: "0",
-                                        top: "50%",
-                                        transform: "translateY(-50%)",
-                                        zIndex: "1",
-                                        color: isHovered && !isPrevDisabled ? 'black' : 'gray' // Change color on hover
-                                    }}
+                                    className={`slick-arrow slick-prev ps-nav-button ps-nav-left ${isPrevDisabled ? 'slick-disabled' : ''} ${isHovered && !isPrevDisabled ? 'hover-enabled ps-text-black' : 'ps-text-gray'}`}
                                     onClick={isPrevDisabled ? undefined : handlePrevSlide}
                                 >
                                     <span className="icon">
@@ -130,43 +113,30 @@ const RecentlyViewedProducts = () => {
                                 </a>
                                 <div className="slick-list" >
                                     <div
-                                        className="slick-track"
+                                        className="slick-track ps-track"
                                         style={{
-                                            display: 'flex',
-                                            justifyContent: 'flex-start', // Align items to the left
-                                            alignItems: 'flex-start',
                                             width: listBookViewed.length * 234,
-                                            transform: `translate3d(-${currentSlide * 234}px, 0px, 0px)`,
-                                            transition: "transform 300ms ease",
-                                            margin: 0, // Remove any default margin
-                                            padding: 0 // Remove any default padding
+                                            transform: `translate3d(-${currentSlide * 234}px, 0px, 0px)`
                                         }}
                                     >
                                         {listBookViewed.map((book, index) => (
                                             <div
                                                 key={book.id}
                                                 data-index={index}
-                                                className={`slick-slide ${index >= currentSlide && index < currentSlide + itemsPerSlide ? 'slick-active' : ''} ${index === currentSlide ? 'slick-current' : ''}`}
+                                                className={`slick-slide ps-slide-item ${index >= currentSlide && index < currentSlide + itemsPerSlide ? 'slick-active' : ''} ${index === currentSlide ? 'slick-current' : ''}`}
                                                 tabIndex={-1}
                                                 aria-hidden={!(index >= currentSlide && index < currentSlide + itemsPerSlide)}
-                                                style={{
-                                                    outline: "none",
-                                                    width: 234,
-                                                    flexShrink: 0,
-                                                    margin: 0, // Ensure no margin between items
-                                                    padding: 0 // Ensure no padding between items
-                                                }}
                                             >
                                                 <div>
                                                     <div
                                                         title={book.mainText}
                                                         rel=""
-                                                        className="sc-662de19e-0 faZNQQ"
+                                                        className="sc-662de19e-0 faZNQQ ps-product-container"
                                                     >
                                                         <a
                                                             href={`/book/${book.id}`}
                                                             data-view-id="product_list_recently_view_item"
-                                                            style={{ width: "100%", height: "100%" }}
+                                                            className="ps-item-link"
                                                         >
                                                             <div className="sc-662de19e-6 beJRlS">
                                                                 <div className="sc-662de19e-7 dWgHEM">
@@ -176,15 +146,9 @@ const RecentlyViewedProducts = () => {
                                                                             srcSet={book.thumbnail}
                                                                         />
                                                                         <img
-                                                                            style={{
-                                                                                width: '226px',
-                                                                                height: '226px',
-                                                                                objectFit: 'contain',
-                                                                                display: 'block'
-                                                                            }}
+                                                                            className="sc-82b4dcf2-0 ldcZGa ps-product-img"
                                                                             alt={book.mainText}
                                                                             src={book.thumbnail}
-                                                                            className="sc-82b4dcf2-0 ldcZGa"
                                                                         />
                                                                     </picture>
                                                                 </div>
@@ -201,28 +165,15 @@ const RecentlyViewedProducts = () => {
                                                                         <span className="percent">-{book.promotion}%</span>
                                                                     )}
                                                                 </p>
-                                                                <div className="title" style={{ maxHeight: 32 }}>
+                                                                <div className="title ps-title-container">
                                                                     <h3>{book.mainText}</h3>
                                                                 </div>
                                                                 <div className="bottom">
                                                                     <div className="sc-662de19e-2 kEvUyF">
-                                                                        <div style={{ display: "flex", alignItems: "center" }}>
+                                                                        <div className="ps-flex-center">
                                                                             <div className="full-rating">
-                                                                                <div
-                                                                                    className="total"
-                                                                                    style={{
-                                                                                        display: "flex",
-                                                                                        alignItems: "center"
-                                                                                    }}
-                                                                                >
-                                                                                    <span
-                                                                                        style={{
-                                                                                            fontWeight: 400,
-                                                                                            fontSize: 12,
-                                                                                            lineHeight: 16,
-                                                                                            color: "rgb(128, 128, 137)"
-                                                                                        }}
-                                                                                    >
+                                                                                <div className="total ps-flex-center">
+                                                                                    <span className="ps-rating-text">
                                                                                         5
                                                                                     </span>
                                                                                     <svg
@@ -230,24 +181,16 @@ const RecentlyViewedProducts = () => {
                                                                                         fill="currentColor"
                                                                                         strokeWidth={0}
                                                                                         viewBox="0 0 24 24"
-                                                                                        color="#fdd836"
                                                                                         height={14}
                                                                                         width={14}
                                                                                         xmlns="http://www.w3.org/2000/svg"
-                                                                                        style={{ color: "rgb(253, 216, 54)", marginLeft: 2 }}
+                                                                                        className="ps-star-icon"
                                                                                     >
                                                                                         <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
                                                                                     </svg>
                                                                                 </div>
                                                                             </div>
-                                                                            <div
-                                                                                style={{
-                                                                                    width: 1,
-                                                                                    height: 12,
-                                                                                    backgroundColor: "rgb(199, 199, 199)",
-                                                                                    margin: "0 6px"
-                                                                                }}
-                                                                            />
+                                                                            <div className="ps-divider" />
                                                                             <div data-view-id="pdp_quantity_sold">
                                                                                 Đã bán {book.sold > 1000 ? '1000+' : book.sold}
                                                                             </div>
@@ -264,16 +207,7 @@ const RecentlyViewedProducts = () => {
                                 </div>
                                 <a
                                     data-role="none"
-                                    className={`slick-arrow slick--next ${isNextDisabled ? 'slick-disabled' : ''} ${isHovered && !isNextDisabled ? 'hover-enabled' : ''}`}
-                                    style={{
-                                        display: "block",
-                                        position: "absolute",
-                                        right: "0",
-                                        top: "50%",
-                                        transform: "translateY(-50%)",
-                                        zIndex: "1",
-                                        color: isHovered && !isNextDisabled ? 'black' : 'gray' // Change color on hover
-                                    }}
+                                    className={`slick-arrow slick--next ps-nav-button ps-nav-right ${isNextDisabled ? 'slick-disabled' : ''} ${isHovered && !isNextDisabled ? 'hover-enabled ps-text-black' : 'ps-text-gray'}`}
                                     onClick={isNextDisabled ? undefined : handleNextSlide}
                                 >
                                     <span className="icon">
@@ -296,13 +230,7 @@ const RecentlyViewedProducts = () => {
                                 </a>
                             </>
                         ) : (
-                            <div style={{
-                                fontSize: '14px',
-                                color: 'rgb(51, 51, 51)',
-                                textAlign: 'center',
-                                margin: '0 auto',
-                                padding: '140px 0px 0px 0px'
-                            }}>
+                            <div className="ps-empty-state">
                                 Không có sản phẩm nào
                             </div>
                         )}
