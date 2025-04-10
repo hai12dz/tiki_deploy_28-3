@@ -292,6 +292,9 @@ const FilterNewProductModal: React.FC<FilterNewProductModalProps> = ({
 
     const handleApplyFilters = async () => {
         try {
+            // Close modal immediately when button is clicked
+            setIsModalOpen(false);
+
             const values = await form.validateFields();
 
             if (setFastDeliveryChecked) setFastDeliveryChecked(localFastDeliveryChecked);
@@ -351,8 +354,6 @@ const FilterNewProductModal: React.FC<FilterNewProductModalProps> = ({
         } catch (error) {
             console.error("Error applying filters:", error);
         }
-
-        setIsModalOpen(false);
     };
 
     const handleResetFilters = () => {
