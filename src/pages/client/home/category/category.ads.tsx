@@ -1,5 +1,5 @@
 import React from "react";
-import "./category.ads.scss";
+import "styles/category.ads.scss";
 
 const ProductCard = () => {
     return (

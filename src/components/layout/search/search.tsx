@@ -1,4 +1,4 @@
-import './search.scss'
+import 'styles/search.scss'
 import { useEffect, useRef, useState } from 'react'
 import { suggestionBookAPI } from '@/services/api'
 

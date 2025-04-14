@@ -1,5 +1,5 @@
 .carousel-container {
-    margin-bottom: 17px;
+    margin-bottom: 18px;
 
 }
 
@@ -7,7 +7,7 @@
 
 .ant-carousel {
     .slick-dots {
-        bottom: -17px !important;
+        bottom: -18px !important;
 
         li {
             width: 16px;
@@ -43,7 +43,7 @@
             }
 
             &.slick-active {
-                width: 25px !important;
+                width: 24px !important;
                 background: #366aee !important;
 
                 /* Đảm bảo dot active vẫn giữ nguyên trạng thái khi hover */

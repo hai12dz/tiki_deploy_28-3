@@ -1,0 +1,63 @@
+.popup-detail-overlay {
+    position: absolute;
+    top: 0;
+    left: 100px;
+    right: 0;
+    bottom: 0;
+    z-index: 9998;
+}
+
+.popup-detail-content {
+    position: absolute;
+    padding: 16px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    z-index: 9999;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.popup-detail-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    font-weight: 500;
+}
+
+.popup-detail-close-button {
+    cursor: pointer;
+}
+
+.popup-detail-content-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.popup-detail-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.popup-detail-info-price {
+    color: #27272A;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.popup-detail-info-description {
+    color: #808089;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.popup-detail-image {
+    width: 16px;
+    height: 16px;
+    opacity: 1;
+}

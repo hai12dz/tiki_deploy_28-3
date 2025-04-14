@@ -53,3 +53,37 @@
 //     border: 1px solid #E0E0E0;
 //     /* Add a border for clarity */
 // }
+
+/* Custom classes to avoid conflicts */
+.tiki-background-image {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 99vw;
+    height: 99vh;
+    max-width: 99vw;
+    max-height: 99vh;
+}
+
+.tiki-hidden-title {
+    display: none;
+}
+
+.eLvPkD {
+    display: flex;
+    padding: 6px;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgb(221, 221, 227);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    color: rgb(39, 39, 42);
+}

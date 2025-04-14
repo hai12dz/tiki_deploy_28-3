@@ -1,4 +1,4 @@
-import { useFilterContext } from "@/context/FilterContext";
+import { useFilterContext } from "@/components/context/FilterContext";
 import { getBooksAPI } from "@/services/api";
 import { ReloadOutlined, StarFilled } from "@ant-design/icons";
 import { Button, Rate, Row, Col, Tag, Divider, message } from "antd"; // Add message from antd
@@ -34,7 +34,6 @@ const Product: React.FC<ProductProps> = ({ listBook: propListBook, categoryId })
     const [searchTerm, setSearchTerm] = useOutletContext() as any;
     const navigate = useNavigate();
 
-    // Use local state as a fallback if props are not provided
     const [localListBook, setLocalListBook] = useState<IBookTable[]>([]);
     const [total, setTotal] = useState<number>(0);
     const [current, setCurrent] = useState<number>(1);
@@ -43,19 +42,14 @@ const Product: React.FC<ProductProps> = ({ listBook: propListBook, categoryId })
 
     const [hasMoreItems, setHasMoreItems] = useState<boolean>(true);
 
-    // Track if a fetch is in progress to prevent duplicate calls
     const [isFetching, setIsFetching] = useState<boolean>(false);
 
-    // Use a ref to store and compare pageSize values explicitly
     const pageSizeRef = useRef<number>(10);
 
-    // Replace items comparison state with more robust tracking
     const [itemIds, setItemIds] = useState<Set<string>>(new Set());
 
-    // Add a ref to track if we've initialized the item IDs from the initial load
     const initializedRef = useRef<boolean>(false);
 
-    // Keep track of previous filter values to detect changes
     const prevFiltersRef = useRef({
         brands: [] as string[],
         suppliers: [] as string[],
@@ -65,13 +59,11 @@ const Product: React.FC<ProductProps> = ({ listBook: propListBook, categoryId })
         fourStars: false,
         sort: '',
         search: '',
-        category: '' // Add category to filter reference
+        category: ''
     });
 
-    // Add a reference to track category changes
     const prevCategoryRef = useRef<string | null>(null);
 
-    // Use prop books if available, otherwise use local state
     const listBook = propListBook || localListBook;
 
     const filteredBooks = useMemo(() => {
@@ -81,42 +73,33 @@ const Product: React.FC<ProductProps> = ({ listBook: propListBook, categoryId })
     }, [searchTerm, listBook]);
 
     const fetchBook = async (requestPageSize?: number) => {
-        // If already fetching, don't start another fetch
         if (isFetching) return;
 
         setIsFetching(true);
         setIsLoading(true);
 
-        // Use the explicitly passed pageSize, or the one from context
         const currentPageSize = requestPageSize || contextPageSize || 10;
         console.log(`Fetching with pageSize: ${currentPageSize}, Previous pageSize: ${pageSizeRef.current}`);
 
-        // Track if we should show notification (only show ONCE)
         let shouldShowNoMoreItemsMessage = false;
 
-        // Build query params using context variables
         let query = new URLSearchParams();
 
-        // Base pagination params - use the currentPageSize
         query.append('current', current.toString());
         query.append('pageSize', currentPageSize.toString());
 
-        // Search by text
         if (searchTerm) {
             query.append('mainText', searchTerm);
         }
 
-        // Category filter
         if (filter) {
             query.append('filter', filter);
         }
 
-        // Add category to query if present
         if (categoryId) {
             query.append('category', categoryId);
         }
 
-        // Sort parameter based on selectedSort from context
         if (selectedSort) {
             const sortCode = getSortCode(selectedSort);
             query.append('sort', sortCode);
@@ -124,17 +107,14 @@ const Product: React.FC<ProductProps> = ({ listBook: propListBook, categoryId })
             query.append('sort', 'popular');
         }
 
-        // Brand filter from context
         if (selectedBrands && selectedBrands.length > 0) {
             query.append('brands', selectedBrands.join(','));
         }
 
-        // Supplier filter from context
         if (selectedSuppliers && selectedSuppliers.length > 0) {
             query.append('suppliers', selectedSuppliers.join(','));
         }
 
-        // Add checkbox filters from context
         if (fourStarsChecked) {
             query.append('minRating', '4');
         }
@@ -151,15 +131,12 @@ const Product: React.FC<ProductProps> = ({ listBook: propListBook, categoryId })
             query.append('fastDelivery', 'true');
         }
 
-        // Convert URLSearchParams to string
         const queryString = query.toString();
         console.log("Fetching with query:", queryString);
 
         try {
-            // Clear any existing messages to prevent duplicates
             message.destroy();
 
-            // IMPORTANT: Store the current item IDs before fetching
             const isInitialized = initializedRef.current;
             const prevItemIds = new Set([...itemIds]);
             const prevItemCount = prevItemIds.size;
@@ -168,27 +145,20 @@ const Product: React.FC<ProductProps> = ({ listBook: propListBook, categoryId })
 
             const res = await getBooksAPI(queryString);
             if (res && res.data) {
-                // Get the new items from the API
                 const items = res.data.items || [];
 
-                // Store all item IDs from this response for comparison
                 const responseItemIds = new Set(items.map(item => item.id));
                 console.log(`Response returned ${items.length} items with ${responseItemIds.size} unique IDs`);
 
-                // Track if we requested more items (increased pageSize)
                 const requestedMoreItems = currentPageSize > pageSizeRef.current;
 
                 if (requestedMoreItems && isInitialized) {
-                    // We're loading MORE items after initial load
 
-                    // Create sets for tracking
                     const newItemIds = new Set([...prevItemIds]);
                     const existingItems = [...localListBook];
 
-                    // Count how many new items we're adding
                     let newItemsCount = 0;
 
-                    // Process new items from response
                     items.forEach(item => {
                         if (!prevItemIds.has(item.id)) {
                             newItemsCount++;
@@ -199,54 +169,43 @@ const Product: React.FC<ProductProps> = ({ listBook: propListBook, categoryId })
 
                     console.log(`Found ${newItemsCount} new items to add`);
 
-                    // Update state with new items
                     setItemIds(newItemIds);
                     setLocalListBook(existingItems);
 
-                    // If we didn't add any new items, hide button and flag to show notification
                     if (newItemsCount === 0) {
                         console.log("No new items found, hiding 'View More' button");
                         shouldShowNoMoreItemsMessage = true;
                         setHasMoreItems(false);
                     }
                 } else {
-                    // Initial load - replace all items
                     console.log("Initial load or filter change - replacing all items");
                     initializedRef.current = true;
 
-                    // Store IDs from initial response
                     setItemIds(responseItemIds);
                     setLocalListBook(items);
 
-                    // For initial load, show "View More" button if there are items
                     setHasMoreItems(items.length > 0);
 
-                    // Special case: Check if items received equals pageSize
-                    // If we got fewer items than requested, there are no more to load
                     if (items.length < currentPageSize) {
                         console.log("Received fewer items than requested pageSize, no more to load");
                         setHasMoreItems(false);
 
-                        // Only show message if this isn't the initial page load
                         if (currentPageSize > 10) {
                             shouldShowNoMoreItemsMessage = true;
                         }
                     }
                 }
 
-                // Update pageSize reference for next comparison
                 pageSizeRef.current = currentPageSize;
 
                 // Set total from meta
                 if (res.data.meta && res.data.meta.totalItems) {
                     setTotal(res.data.meta.totalItems);
 
-                    // Additional check: if we've loaded all items based on total, hide button
                     if (responseItemIds.size >= res.data.meta.totalItems && items.length > 0) {
                         console.log("All items loaded based on totalItems");
                         setHasMoreItems(false);
 
-                        // Only show message if this isn't the initial page load and we're loading more
                         if (currentPageSize > 10 && requestedMoreItems) {
                             shouldShowNoMoreItemsMessage = true;
                         }
@@ -254,7 +213,6 @@ const Product: React.FC<ProductProps> = ({ listBook: propListBook, categoryId })
                 }
             }
 
-            // Show the notification ONCE outside all the conditional checks
             if (shouldShowNoMoreItemsMessage) {
                 message.info('Đã hiển thị toàn bộ sản phẩm');
             }
@@ -268,7 +226,6 @@ const Product: React.FC<ProductProps> = ({ listBook: propListBook, categoryId })
         }
     };
 
-    // Helper function to get consistent sort code
     const getSortCode = (sortText: string): string => {
         switch (sortText) {
             case 'Phổ biến':
@@ -282,13 +239,11 @@ const Product: React.FC<ProductProps> = ({ listBook: propListBook, categoryId })
             case 'Giá cao đến thấp':
                 return 'price-desc';
             default:
-                return 'popular'; // Default to popular
+                return 'popular';
         }
     };
 
-    // Check for filter changes when component updates
     useEffect(() => {
-        // Track if filters have changed
         const filtersChanged =
             !arraysEqual(prevFiltersRef.current.brands, selectedBrands) ||
             !arraysEqual(prevFiltersRef.current.suppliers, selectedSuppliers) ||
@@ -299,21 +254,18 @@ const Product: React.FC<ProductProps> = ({ listBook: propListBook, categoryId })
             prevFiltersRef.current.sort !== selectedSort ||
             prevFiltersRef.current.search !== searchTerm;
 
-        // If filters changed, reset pagination state and show "View More" button
         if (filtersChanged) {
             console.log("Filters changed, resetting pagination state and enabling 'View More' button");
-            setHasMoreItems(true); // Important: Show the View More button again
+            setHasMoreItems(true);
             pageSizeRef.current = 10;
             initializedRef.current = false;
             setItemIds(new Set());
 
-            // Reset context pageSize to 10
             if (setPageSize) {
                 setPageSize(10);
             }
         }
 
-        // Update the filter reference for next comparison
         prevFiltersRef.current = {
             brands: [...selectedBrands],
             suppliers: [...selectedSuppliers],
@@ -323,7 +275,7 @@ const Product: React.FC<ProductProps> = ({ listBook: propListBook, categoryId })
             fourStars: fourStarsChecked,
             sort: selectedSort,
             search: searchTerm,
-            category: categoryId || '' // Update category in filter reference
+            category: categoryId || ''
         };
     }, [
         selectedBrands,
@@ -338,25 +290,20 @@ const Product: React.FC<ProductProps> = ({ listBook: propListBook, categoryId })
         setPageSize
     ]);
 
-    // When category changes, reset state
     useEffect(() => {
         if (categoryId !== prevCategoryRef.current && categoryId) {
             console.log(`Category changed to: ${categoryId}`);
-            // Reset pagination and items
             setCurrent(1);
             setItemIds(new Set());
             initializedRef.current = false;
             pageSizeRef.current = 10;
 
-            // Reset local state
             setLocalListBook([]);
 
-            // Update category reference
             prevCategoryRef.current = categoryId;
         }
     }, [categoryId]);
 
-    // Helper function to compare arrays
     const arraysEqual = (a: string[], b: string[]): boolean => {
         if (a.length !== b.length) return false;
         const sortedA = [...a].sort();
@@ -364,7 +311,6 @@ const Product: React.FC<ProductProps> = ({ listBook: propListBook, categoryId })
         return sortedA.every((val, idx) => val === sortedB[idx]);
     };
 
-    // Only fetch books if we're not receiving them from props
     useEffect(() => {
         if (!propListBook && !isFetching) {
             fetchBook();
@@ -386,14 +332,12 @@ const Product: React.FC<ProductProps> = ({ listBook: propListBook, categoryId })
     const addViewedProduct = (productId: string) => {
         const viewedProducts = JSON.parse(localStorage.getItem("viewedProducts") || "[]").map(Number);
 
-        // Nếu sản phẩm chưa có trong danh sách thì thêm vào
         if (!viewedProducts.includes(productId)) {
             viewedProducts.push(productId);
         }
 
-        // Giữ tối đa 10 sản phẩm gần nhất
         if (viewedProducts.length > 10) {
-            viewedProducts.shift(); // Xóa sản phẩm cũ nhất
+            viewedProducts.shift();
         }
 
         localStorage.setItem("viewedProducts", JSON.stringify(viewedProducts));
@@ -403,7 +347,7 @@ const Product: React.FC<ProductProps> = ({ listBook: propListBook, categoryId })
         <>
             {!isLoading && (
                 <div className="product-container">
-                    <Row className="customize-row" > {/* Điều chỉnh gutter */}
+                    <Row className="customize-row" >
                         {filteredBooks?.length > 0 ? (
                             filteredBooks.map((item, index) => (
                                 <Col
@@ -422,14 +366,12 @@ const Product: React.FC<ProductProps> = ({ listBook: propListBook, categoryId })
                                         className="column top-deal-column"
                                     >
                                         <div className="wrapper">
-                                            {/* Thumbnail */}
                                             <div className="thumbnail">
                                                 <img
                                                     src={item.thumbnail}
 
                                                     alt="thumbnail book"
                                                 />
-                                                {/* Badge */}
                                                 <div className="badge-container">
                                                     <picture className="webpimg-container">
                                                         <source
@@ -444,11 +386,9 @@ const Product: React.FC<ProductProps> = ({ listBook: propListBook, categoryId })
                                                     </picture>
                                                 </div>
                                                 <div className="left-badge">25.3</div>
-                                                {/* Badge "AD" */}
                                                 <p className="ads-badge">AD</p>
                                             </div>
 
-                                            {/* Price and Promotion */}
                                             <div className="price-section">
                                                 <div className="price">
                                                     {new Intl.NumberFormat("vi-VN", {
@@ -465,12 +405,10 @@ const Product: React.FC<ProductProps> = ({ listBook: propListBook, categoryId })
                                             <div className="author" title={item.author}>
                                                 <span>{item.author}</span>
                                             </div>
-                                            {/* Text */}
                                             <div className="text" title={item.mainText}>
                                                 <span>{item.mainText}</span>
                                             </div>
 
-                                            {/* Rating - đặt ngay sau text, không có spacer */}
                                             <div className="rating">
                                                 <Rate
                                                     className="rate"
@@ -482,10 +420,8 @@ const Product: React.FC<ProductProps> = ({ listBook: propListBook, categoryId })
                                                 <span>Đã bán {item?.sold ?? 0}</span>
                                             </div>
 
-                                            {/* Spacer - sẽ đẩy divider xuống cuối */}
                                             <div style={{ flex: '1' }}></div>
 
-                                            {/* Divider */}
                                             <Divider className="divider" style={{ margin: '0' }} />
 
                                             <div className="delivery">
@@ -540,26 +476,21 @@ const Product: React.FC<ProductProps> = ({ listBook: propListBook, categoryId })
                     </Row>
 
 
-                    {/* Show View More button only if we have items and hasMoreItems is true */}
                     {filteredBooks?.length > 0 && hasMoreItems && !isFetching && (
                         <div className="view-more-container">
                             <div
                                 data-view-id="category_infinity_view.more"
                                 className="view-more-button"
                                 onClick={() => {
-                                    // Clear any existing messages first
                                     message.destroy();
 
-                                    // Calculate new page size - explicitly use pageSizeRef for better consistency
                                     const newSize = pageSizeRef.current + 10;
                                     console.log(`View More clicked - increasing pageSize from ${pageSizeRef.current} to ${newSize}`);
 
-                                    // Update context pageSize
                                     if (setPageSize) {
                                         setPageSize(newSize);
                                     }
 
-                                    // Fetch with new size immediately
                                     fetchBook(newSize);
                                 }}
                             >
@@ -576,7 +507,6 @@ const Product: React.FC<ProductProps> = ({ listBook: propListBook, categoryId })
                         </div>
                     )}
 
-                    {/* Show a message when there are no more items to load */}
                     {filteredBooks?.length > 0 && !hasMoreItems && !isLoading && (
                         <div className="no-more-items-message">
                             Đã hiển thị tất cả sản phẩm
@@ -588,7 +518,6 @@ const Product: React.FC<ProductProps> = ({ listBook: propListBook, categoryId })
     );
 };
 
-// Set default props
 Product.defaultProps = {
     listBook: undefined
 };

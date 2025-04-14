@@ -47,7 +47,7 @@ const CategoryExplorer = () => {
                 <div className="sc-d1be8d65-1 NBIRX">Khám phá theo danh mục</div>
                 <div className="sc-36d678cb-0 eSTCTE">
                     {listCategory.map((item, index) => (
-                        <div key={index} className="sc-36d678cb-1 jZopbL">
+                        <div key={index} className={`sc-36d678cb-1 jZopbL ${expandedCategories[item.label] ? 'expanded' : ''}`}>
                             <div className="sc-36d678cb-2 bLoXGk">
                                 <a href={`/category/${item.value}`}>
                                     <div className="sc-36d678cb-3 fZuZht">{item.label}</div>
@@ -56,17 +56,12 @@ const CategoryExplorer = () => {
                                     <img
                                         src="https://salt.tikicdn.com/cache/100x100/ts/ta/6c/37/a4/7ee5c72cc1c35b6b90b70b2ce3498215.png.webp"
                                         alt="Toggle"
-                                        style={{
-                                            width: "20px",
-                                            height: "20px",
-                                            transform: expandedCategories[item.label] ? "rotate(0deg)" : "rotate(180deg)",
-                                            transition: "transform 0.3s ease"
-                                        }}
+                                        className={expandedCategories[item.label] ? "arrow-expanded" : "arrow-collapsed"}
                                     />
                                 </div>
                             </div>
                             {expandedCategories[item.label] && nameCategory[item.label] && (
-                                <div className="sc-36d678cb-5 cHTThk">
+                                <div className="sc-36d678cb-5 cHTThk dropdown-content">
                                     {nameCategory[item.label].map((subItem, subIndex) => (
                                         <div key={subIndex} className="sc-36d678cb-6 jZEauZ">
                                             <a href={`/subcategory/${subItem}`}>{subItem}</a>

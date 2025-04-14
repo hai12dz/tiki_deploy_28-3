@@ -1,0 +1,67 @@
+.related-brand {
+    &__content-wrapper {
+        padding-top: 12px;
+    }
+
+    &__slider-container {
+        gap: 12px;
+        transition: 0.5s ease-in-out;
+    }
+
+    &__slide {
+        display: -webkit-box;
+        width: 674px;
+    }
+
+    &__banner-link {
+        border: 1px solid rgb(166, 166, 176);
+        border-radius: 8px;
+        height: 224.667px;
+        display: block;
+        box-sizing: content-box;
+    }
+
+    &__banner-image {
+        border-radius: 8px;
+        display: block;
+        width: 100%;
+        object-fit: cover;
+        height: 100%;
+    }
+
+    &__pagination {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        margin-top: 8px;
+    }
+
+    &__pagination-dot {
+        height: 2px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &--active {
+            width: 24px;
+            background: rgb(10, 104, 255);
+        }
+
+        &--inactive {
+            width: 16px;
+            background: rgba(0, 0, 0, 0.05);
+        }
+    }
+
+    &__nav-button {
+        &--visible {
+            opacity: 1;
+        }
+
+        &--hidden {
+            opacity: 0;
+        }
+    }
+}

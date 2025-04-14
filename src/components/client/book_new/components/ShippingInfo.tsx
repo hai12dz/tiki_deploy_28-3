@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Popover } from 'antd';
-import './ShippingInfo.scss'
+import 'styles/ShippingInfo.scss'
 interface ShippingInfoProps {
     deliveryAddress: string;
     onChangeAddress: () => void;

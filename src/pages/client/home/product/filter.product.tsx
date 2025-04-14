@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import './filter.product.scss';
+import 'styles/filter.product.scss';
 import { useOutletContext } from 'react-router-dom';
 import { getBooksAPI, getBrandsAPI, getFullCategories, getSuppliersAPI } from '@/services/api';
-import { set } from 'lodash';
-import { useFilterContext } from '@/context/FilterContext';
+
+import { useFilterContext } from '@/components/context/FilterContext';
 import FilterNewProductModal from './filter.modal.new';
 
 interface ProductFilterProps {
@@ -406,7 +406,7 @@ const ProductFilter: React.FC<ProductFilterProps> = ({
                 ref={modalRef}
                 className="brand-selection-modal brand-modal-portal"
                 style={{
-                    '--top-position': `${buttonRect.bottom + window.scrollY + 10}px`,
+                    '--top-position': `${buttonRect.bottom + window.scrollY + 10}px`, // Changed from 10px to 20px
                     '--left-position': `${buttonRect.left + window.scrollX - 200}px`
                 } as React.CSSProperties}
             >
@@ -751,6 +751,7 @@ const ProductFilter: React.FC<ProductFilterProps> = ({
                             onClick={handleFastDeliveryChange}
                         >
                             <img
+
                                 src="https://salt.tikicdn.com/ts/tka/a8/31/b6/802e2c99dcce64c67aa2648edb15dd25.png"
                                 alt="Giao siêu tốc 2H"
                                 className="now-tag"

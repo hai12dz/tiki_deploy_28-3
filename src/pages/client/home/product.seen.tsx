@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { fetchViewedProductsAPI } from '@/services/api';
-import './product.seen.scss';
+import 'styles/product.seen.scss';
 
 const RecentlyViewedProducts = () => {
     const [listBookViewed, setListBookViewed] = useState<IBookTable[]>([]);

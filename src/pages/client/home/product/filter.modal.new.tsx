@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './filter.modal.new.scss';
-import { getBooksAPI } from '@/services/api'; // Changed from filterBookWithFullInfoAPI
+import 'styles/filter.modal.new.scss';
+import { getBooksAPI } from '@/services/api';
 import { Form, InputNumber, Row, Col, Divider, Button } from 'antd';
 
 interface FilterNewProductModalProps {
@@ -24,14 +24,14 @@ interface FilterNewProductModalProps {
     cheapPriceChecked?: boolean;
     freeShipChecked?: boolean;
     fourStarsChecked?: boolean;
-    fiveStarsChecked?: boolean; // Added prop for 5-star rating
-    threeStarsChecked?: boolean; // Added prop for 3-star rating
+    fiveStarsChecked?: boolean;
+    threeStarsChecked?: boolean;
     setFastDeliveryChecked?: (checked: boolean) => void;
     setCheapPriceChecked?: (checked: boolean) => void;
     setFreeShipChecked?: (checked: boolean) => void;
     setFourStarsChecked?: (checked: boolean) => void;
-    setFiveStarsChecked?: (checked: boolean) => void; // Added setter for 5-star rating
-    setThreeStarsChecked?: (checked: boolean) => void; // Added setter for 3-star rating
+    setFiveStarsChecked?: (checked: boolean) => void;
+    setThreeStarsChecked?: (checked: boolean) => void;
     minPrice?: string;
     maxPrice?: string;
     setMinPrice?: (price: string) => void;
@@ -41,14 +41,11 @@ interface FilterNewProductModalProps {
 const FilterNewProductModal: React.FC<FilterNewProductModalProps> = ({
     isModalOpen,
     setIsModalOpen,
-    queryFiler,
-    setQueryFilter,
     listBrand,
     listSupplier,
     pageSize,
     setListBook,
     setTotal,
-    listFullCategory,
     selectedBrands,
     selectedSuppliers,
     setParentSelectedBrands,
@@ -59,8 +56,8 @@ const FilterNewProductModal: React.FC<FilterNewProductModalProps> = ({
     cheapPriceChecked = false,
     freeShipChecked = false,
     fourStarsChecked = false,
-    fiveStarsChecked = false, // Default to false
-    threeStarsChecked = false, // Default to false
+    fiveStarsChecked = false,
+    threeStarsChecked = false,
     setFastDeliveryChecked,
     setCheapPriceChecked,
     setFreeShipChecked,

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import '../search/search.scss'
+import 'styles/search.scss'
 import SearchProducts from '../search/search'
 
 const Header: React.FC = () => {
@@ -36,7 +36,6 @@ const Header: React.FC = () => {
                 )}
             </div>
 
-            {/* Other header content */}
         </header>
     );
 };

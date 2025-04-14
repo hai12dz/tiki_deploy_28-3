@@ -65,7 +65,6 @@ const TikiBookstore: React.FC<TikiBookstoreProps> = ({ onListBookChange, isLoadi
                         <div
                             key={index}
                             onClick={() => handleCategoryClick(item.id)}
-                            style={{ cursor: 'pointer' }}
                             className={`sc-9f1e84db-3 jhfSVS ${selectedCategory === item.id ? 'selected-category' : ''}`}
                         >
                             <div className="sc-9f1e84db-4 bxgzHY">
@@ -77,8 +76,8 @@ const TikiBookstore: React.FC<TikiBookstoreProps> = ({ onListBookChange, isLoadi
                 </div>
             </div>
 
-            <div className="sc-9f1e84db-0 hzwFlv">
-                <div className="sc-9f1e84db-2 cASiea">Tất cả sản phẩm</div>
+            <div className="sc-9f1e84db-0 hzwFlv all-products">
+                <div className="sc-9f1e84db-2 cASiea product-title-offset">Tất cả sản phẩm</div>
                 <div>
                     <ProductFilter
                         isLoading={isLoading}

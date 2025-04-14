@@ -1,5 +1,5 @@
 import React from 'react';
-import CarouselProduct from '../carousel.product';
+import CarouselProduct from '../general/carousel.product';
 
 interface OrderSummaryProps {
     currentBook: IBookTable;
