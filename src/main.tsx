@@ -12,7 +12,7 @@ import { App, ConfigProvider } from 'antd';
 import { AppProvider } from 'components/context/app.context';
 
 import enUS from 'antd/locale/en_US';
-import { FilterProvider } from './components/context/FilterContext';
+import { FilterProvider } from './components/context/filter.context';
 
 const router = createBrowserRouter([
   {

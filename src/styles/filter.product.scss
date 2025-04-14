@@ -691,6 +691,7 @@ $font-family: 'Inter', Helvetica, Arial, sans-serif;
     width: 450px;
     display: flex;
     flex-direction: column;
+    z-index: 1050; // Thêm z-index cao hơn
 
     .brand-selection-content,
     .supplier-selection-content {
@@ -738,6 +739,7 @@ $font-family: 'Inter', Helvetica, Arial, sans-serif;
     --left-position: 0;
     top: var(--top-position);
     left: var(--left-position);
+    z-index: 1050; // Thêm z-index cao
 }
 
 .supplier-modal-portal {
@@ -746,6 +748,7 @@ $font-family: 'Inter', Helvetica, Arial, sans-serif;
     --left-position: 0;
     top: var(--top-position);
     left: var(--left-position);
+    z-index: 1050; // Thêm z-index cao
 }
 
 // Sort menu styles
@@ -755,7 +758,7 @@ $font-family: 'Inter', Helvetica, Arial, sans-serif;
     border: 1px solid #E0E0E0;
     border-radius: 4px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    z-index: 1050; // Tăng z-index để phù hợp với các portal khác
     width: 200px;
     @include flex(column);
 
